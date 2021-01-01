@@ -1,0 +1,51 @@
+# kdiff3 ignore
+*.orig
+runtime/
+.runtime/
+target/
+build/
+*.log
+*.iml
+*.class
+# maven ignore
+*/target/
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+bible-*/*.ipr
+bible-*/*.iml
+bible-*/*.iws
+
+*.iml
+*.ipr
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# configuration ignore
+bible-*/src/main/webapp/WEB-INF/classes/*
+target
+# PyBuilder
+
+# App
+/scaffold.py
+
+catalina.base_IS_UNDEFINED
+runtime/
+logs/
+data/
+*.flattened-pom.xml
