@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: feign-client
+  sleuth:
+    sampler:
+      probability: 1.0
+
+server:
+  port: 7003

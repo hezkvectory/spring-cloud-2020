@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: feign-server
+  sleuth:
+    sampler:
+      probability: 1.0
+
+server:
+  port: 7002
