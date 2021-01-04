@@ -1,0 +1,12 @@
+.idea/*
+
+*.iml
+*.class
+*.ipr
+*.iws
+
+
+runtime/
+logs/
+data/
+*.flattened-pom.xml
