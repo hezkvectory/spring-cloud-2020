@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="feign-client" />
         <module name="feign-server" />
         <module name="eureka-server" />
-        <module name="gateway" />
+        <module name="feign-client" />
         <module name="zipkin" />
+        <module name="gateway" />
+        <module name="commons" />
       </profile>
     </annotationProcessing>
   </component>
