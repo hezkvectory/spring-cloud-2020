@@ -1,4 +1,6 @@
-.idea/*
+
+/.idea/
+/.idea/workspace.xml
 
 *.iml
 *.class
@@ -10,3 +12,5 @@ runtime/
 logs/
 data/
 *.flattened-pom.xml
+
+/eureka-server/target/

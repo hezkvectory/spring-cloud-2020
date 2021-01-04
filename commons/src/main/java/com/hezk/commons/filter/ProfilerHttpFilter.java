@@ -1,10 +1,13 @@
-package com.hezk.commons.metrics;
+package com.hezk.commons.filter;
 
 
 import com.google.common.collect.Sets;
+import com.hezk.commons.metrics.LatencyProfiler;
+import com.hezk.commons.metrics.LatencyStat;
 import com.hezk.commons.utils.HttpUtil;
 import io.prometheus.client.Gauge;
 import io.prometheus.client.Histogram;
+import org.springframework.core.Ordered;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +16,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-
-public class ProfilerHttpFilter implements Filter {
+public class ProfilerHttpFilter implements Filter, Ordered {
     private static final Histogram REQUEST_LATENCY = Histogram.build()
             .name("requests_latency_seconds").help("Request latency in seconds.").register();
 
@@ -74,4 +76,8 @@ public class ProfilerHttpFilter implements Filter {
 
     }
 
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 }

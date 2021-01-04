@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vipkid.cloud</groupId>
+    <groupId>com.hezk.cloud</groupId>
     <artifactId>spring-cloud-2020</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
     <modules>
+        <module>commons</module>
         <module>feign-server</module>
         <module>eureka-server</module>
         <module>feign-client</module>
         <module>gateway</module>
-        <module>zipkin</module>
-        <module>commons</module>
+<!--        <module>zipkin</module>-->
     </modules>
 
     <properties>
