@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.hezk.commons.configuration.WebAutoConfiguration
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.hezk.commons.configuration.CommonsEnvironmentPostProcessor
