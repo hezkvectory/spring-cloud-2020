@@ -1,11 +1,10 @@
-package com.hezk.zipkin.server;
+package com.hezk.shiro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import zipkin2.server.internal.EnableZipkinServer;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication
-@EnableZipkinServer
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
