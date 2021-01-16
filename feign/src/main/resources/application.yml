@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: feign-server
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+    url: jdbc:h2:mem:test
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 7002
+
+
+user:
+  hobby:
+    - 'basketball'
+    - 'football'
+  score:
+    chinese: 88
+    english: 85

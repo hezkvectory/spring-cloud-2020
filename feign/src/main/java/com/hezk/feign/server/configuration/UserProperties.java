@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
-//@Component
-//@ConfigurationProperties(prefix = "user")
+@Component
+@ConfigurationProperties(prefix = "user")
 public class UserProperties {
     private List<String> hobby;
     private Map<String, Integer> score;

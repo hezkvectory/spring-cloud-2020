@@ -33,9 +33,9 @@ public class CommonsEnvironmentPostProcessor implements EnvironmentPostProcessor
         firstSource.put("spring.zipkin.base-url", "http://localhost:9411/");
         firstSource.put("spring.sleuth.sampler.probability", 1.0);
 
-        firstSource.put("eureka.client.register-with-eureka", false);
-        firstSource.put("eureka.client.fetch-registry", false);
-        firstSource.put("eureka.client.service-url.default-zone", "http://localhost:7001/eureka");
+        firstSource.put("eureka.client.register-with-eureka", true);
+        firstSource.put("eureka.client.fetch-registry", true);
+        firstSource.put("eureka.client.service-url.defaultZone", "http://localhost:7001/eureka");
     }
 
 }
