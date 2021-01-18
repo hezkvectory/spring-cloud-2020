@@ -10,7 +10,7 @@
     <version>${revision}</version>
 
     <modules>
-        <module>commons</module>
+        <module>base/commons</module>
         <module>feign</module>
         <module>feign-client</module>
         <module>eureka-server</module>
@@ -19,6 +19,7 @@
         <module>groovy</module>
         <module>redis</module>
         <module>bytebuddy</module>
+        <module>base/h2</module>
     </modules>
 
     <properties>
