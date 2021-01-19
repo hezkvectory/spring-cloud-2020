@@ -19,6 +19,7 @@
         <module>groovy</module>
         <module>redis</module>
         <module>bytebuddy</module>
+        <module>standalone</module>
     </modules>
 
     <properties>
