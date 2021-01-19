@@ -18,9 +18,11 @@
         <module>shiro</module>
         <module>groovy</module>
         <module>redis</module>
-        <module>bytebuddy</module>
         <module>standalone</module>
         <module>base/h2</module>
+        <module>jvm/asm</module>
+        <module>jvm/javassist</module>
+        <module>jvm/bytebuddy</module>
     </modules>
 
     <properties>
