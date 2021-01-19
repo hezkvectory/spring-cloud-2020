@@ -1,4 +1,4 @@
-package com.hezk.feign.server.domain;
+package com.hezk.h2.domain;
 
 public class User {
     private Long id;
