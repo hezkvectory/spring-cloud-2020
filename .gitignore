@@ -13,4 +13,5 @@ data/
 *.flattened-pom.xml
 
 /*/target/
+/*/*/target/
 /build/

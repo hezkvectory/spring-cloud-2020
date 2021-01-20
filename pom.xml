@@ -23,6 +23,7 @@
         <module>groovy</module>
         <module>redis</module>
         <module>standalone</module>
+        <module>grpc</module>
     </modules>
 
     <properties>
