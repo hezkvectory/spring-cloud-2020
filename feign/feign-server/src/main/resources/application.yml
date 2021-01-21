@@ -1,0 +1,10 @@
+server:
+  port: 7002
+
+user:
+  hobby:
+    - 'basketball'
+    - 'football'
+  score:
+    chinese: 88
+    english: 85

@@ -1,7 +1,5 @@
 package com.hezk.standalone.controller;
 
-import org.apache.skywalking.apm.toolkit.trace.ActiveSpan;
-import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +16,6 @@ public class IndexController {
     @GetMapping({"/", "/index"})
     public String index() {
 
-        String traceId = TraceContext.traceId();
-
-        ActiveSpan.tag("my_tag", "my_value");
-        ActiveSpan.error();
-        ActiveSpan.error("Test-Error-Reason");
-
-        ActiveSpan.error(new RuntimeException("Test-Error-Throwable"));
-        ActiveSpan.info("Test-Info-Msg");
-        ActiveSpan.debug("Test-debug-Msg");
-
-        LOGGER.info("traceId:{}", traceId);
         LOGGER.trace("trace....");
         LOGGER.debug("debug....");
         LOGGER.info("info....");
@@ -36,4 +23,12 @@ public class IndexController {
         LOGGER.error("error....");
         return "index";
     }
+
+
+    @RequestMapping("/home")
+    public String home() {
+        LOGGER.info("Handling home");
+        return "Hello World";
+    }
+
 }

@@ -17,11 +17,12 @@
             <artifactId>commons</artifactId>
             <version>${revision}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-toolkit-trace</artifactId>
-            <version>8.0.1</version>
-        </dependency>
+
+    <!--        <dependency>-->
+<!--            <groupId>org.apache.skywalking</groupId>-->
+<!--            <artifactId>apm-toolkit-trace</artifactId>-->
+<!--            <version>8.0.1</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
