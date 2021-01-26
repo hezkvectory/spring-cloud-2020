@@ -24,6 +24,7 @@ import static net.bytebuddy.matcher.ElementMatchers.*;
 
 public class Agent {
     public static void premain(String arguments, Instrumentation inst) {
+        System.out.println("Agent ClassLoader: " + Agent.class.getClassLoader());
         File temp = new File("./temp1");
         if (!temp.exists()) {
             temp.mkdirs();

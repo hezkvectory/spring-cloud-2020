@@ -8,7 +8,7 @@ import io.grpc.ManagedChannelBuilder;
 
 public class Application {
     private static final String host = "localhost";
-    private static final int serverPort = 9999;
+    private static final int serverPort = 50051;
 
     public static void main(String[] args) {
         ManagedChannel managedChannel = ManagedChannelBuilder.forAddress(host, serverPort).usePlaintext().build();

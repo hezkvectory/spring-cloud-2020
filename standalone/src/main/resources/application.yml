@@ -1,6 +1,14 @@
 server:
   port: 8010
+  shutdown: graceful
 
 spring:
   application:
     name: standalone
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  health:
+    probes:
+      enabled: true

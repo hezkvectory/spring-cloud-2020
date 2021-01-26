@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: standalone
+  name: standalone
+  namespace: meteor
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  selector:
+    matchLabels:
+      app: standalone
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+        image: hub.vipkid.com.cn/pub/standalone:v1
+        imagePullPolicy: IfNotPresent
+        name: standalone
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+

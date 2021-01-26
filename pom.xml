@@ -10,18 +10,16 @@
     <version>${revision}</version>
 
     <modules>
-        <module>eureka-server</module>
         <module>base</module>
-        <module>feign</module>
-       <!-- <module>jvm/asm</module>
-        <module>jvm/javassist</module>
-        <module>jvm/bytebuddy</module>
-        <module>gateway</module>
+<!--        <module>feign</module>-->
+<!--        <module>grpc</module>-->
+<!--       <module>jvm</module>-->
+        <!-- <module>gateway</module>
         <module>shiro</module>
-        <module>grpc</module>
         <module>groovy</module>
         <module>redis</module>-->
         <module>standalone</module>
+        <module>io</module>
     </modules>
 
     <properties>
@@ -64,6 +62,19 @@
                 <version>2020.0.0-M1</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-kubernetes-dependencies</artifactId>
+                <version>2.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-zookeeper-dependencies</artifactId>
+                <version>3.0.0</version>
+                <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>

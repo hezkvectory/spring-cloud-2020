@@ -5,17 +5,21 @@
     <parent>
         <artifactId>spring-cloud-2020</artifactId>
         <groupId>com.hezk.cloud</groupId>
-        <version>${revision}</version>
+        <version>1.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>feign</artifactId>
+    <artifactId>io</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>eureka-server</module>
-        <module>feign-server</module>
-        <module>feign-client</module>
+        <module>origin-zk</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

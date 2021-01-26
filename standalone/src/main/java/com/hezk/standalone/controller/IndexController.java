@@ -15,6 +15,7 @@ public class IndexController {
 
     @GetMapping({"/", "/index"})
     public String index() {
+        System.out.println("IndexController.index classLoader: " + this.getClass().getClassLoader());
 
         LOGGER.trace("trace....");
         LOGGER.debug("debug....");
@@ -24,11 +25,40 @@ public class IndexController {
         return "index";
     }
 
-
-    @RequestMapping("/home")
+    @GetMapping("/home")
     public String home() {
         LOGGER.info("Handling home");
         return "Hello World";
     }
+
+    @GetMapping("/sleep10")
+    public String sleep10(){
+        try {
+            Thread.sleep(10L);
+        } catch (InterruptedException e) {
+        }
+        return "sleep10";
+    }
+
+
+    @GetMapping("/sleep100")
+    public String sleep100(){
+        try {
+            Thread.sleep(100L);
+        } catch (InterruptedException e) {
+        }
+        return "sleep100";
+    }
+
+
+    @GetMapping("/sleep200")
+    public String sleep200(){
+        try {
+            Thread.sleep(200L);
+        } catch (InterruptedException e) {
+        }
+        return "sleep200";
+    }
+
 
 }
