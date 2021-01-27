@@ -11,7 +11,7 @@
 
     <modules>
         <module>base</module>
-<!--        <module>feign</module>-->
+        <module>feign</module>
 <!--        <module>grpc</module>-->
 <!--       <module>jvm</module>-->
         <!-- <module>gateway</module>

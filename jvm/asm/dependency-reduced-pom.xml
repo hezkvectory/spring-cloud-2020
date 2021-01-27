@@ -4,6 +4,7 @@
     <artifactId>spring-cloud-2020</artifactId>
     <groupId>com.hezk.cloud</groupId>
     <version>${revision}</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>asm</artifactId>
