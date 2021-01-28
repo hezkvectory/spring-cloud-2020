@@ -37,7 +37,12 @@ public class CommonsEnvironmentPostProcessor implements EnvironmentPostProcessor
         firstSource.put("eureka.client.fetch-registry", true);
         firstSource.put("eureka.client.service-url.defaultZone", "http://localhost:7001/eureka");
 
-        firstSource.put("spring.cloud.loadbalancer.configurations", "meteor");
+//        firstSource.put("spring.cloud.loadbalancer.configurations", "meteor");
+
+        firstSource.put("management.endpoint.health.probes.enabled", true);
+
+        firstSource.put("eureka.client.healthcheck.enabled", true);
+
     }
 
 }
