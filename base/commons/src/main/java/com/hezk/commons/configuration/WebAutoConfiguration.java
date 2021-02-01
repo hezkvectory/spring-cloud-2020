@@ -4,6 +4,7 @@ import io.micrometer.core.instrument.Meter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.config.MeterFilter;
 import io.micrometer.core.instrument.distribution.DistributionStatisticConfig;
+import org.springframework.boot.actuate.autoconfigure.health.ConditionalOnEnabledHealthIndicator;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,12 @@ public class WebAutoConfiguration {
     @Bean
     public OfflineEndpoint offlineEndpoint() {
         return new OfflineEndpoint();
+    }
+
+    @Bean
+    @ConditionalOnEnabledHealthIndicator("check")
+    public CheckHealthIndicator checkHealthIndicator(){
+        return new CheckHealthIndicator();
     }
 
     @Bean
