@@ -9,12 +9,16 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class AspectJAnnotationBrowserAroundAdvice {
+
     @Pointcut("execution(* com.hezk.aop.service.ChromeBrowser.*(..))")
     private void pointcut() {
-
     }
 
-    @Around(value = "pointcut()")
+    @Pointcut("execution(protected * com.hezk.aop.proxy.ChromeBrowser2.*(..))")
+    private void pointcut2() {
+    }
+
+    @Around(value = "pointcut() || pointcut2()")
     public Object aroundIntercept(ProceedingJoinPoint pjp) throws Throwable {
         encrypt();
         Object retVal = pjp.proceed();

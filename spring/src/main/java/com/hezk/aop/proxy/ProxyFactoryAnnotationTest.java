@@ -14,7 +14,11 @@ public class ProxyFactoryAnnotationTest {
         applicationContext.refresh();
         
         ChromeBrowser chromeBrowser = applicationContext.getBean(ChromeBrowser.class);
-        chromeBrowser.visitInternet();
+        chromeBrowser.hello();
+
+//        ChromeBrowser2 chromeBrowser2 = applicationContext.getBean(ChromeBrowser2.class);
+//        chromeBrowser2.hello2();
+
     }
 
     @Bean
