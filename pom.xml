@@ -10,18 +10,18 @@
     <version>${revision}</version>
 
     <modules>
-        <!--        <module>base</module>-->
-        <!--        <module>feign</module>-->
+        <module>base</module>
+<!--        <module>feign</module>-->
         <!--        <module>spring</module>-->
         <!--        <module>grpc</module>-->
         <!--       <module>jvm</module>-->
         <!-- <module>gateway</module>
         <module>shiro</module>
-        <module>groovy</module>
-        <module>redis</module>-->
+        <module>groovy</module>-->
+        <module>redis</module>
         <!--    <module>standalone</module>
             <module>io</module>-->
-        <module>thrift</module>
+<!--        <module>thrift</module>-->
     </modules>
 
     <properties>
