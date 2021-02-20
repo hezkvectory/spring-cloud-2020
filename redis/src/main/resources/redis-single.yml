@@ -1,12 +1,11 @@
 singleServerConfig:
   address: "redis://10.33.1.11:6379"
   database: 0
-#  idleConnectionTimeout: 10000
-#  pingTimeout: 1000
+  idleConnectionTimeout: 60000
 #  connectTimeout: 10000
-#  timeout: 3000
-#  retryAttempts: 3
-#  retryInterval: 1500
+  timeout: 60000
+  retryAttempts: 0
+  retryInterval: 0
 #  reconnectionTimeout: 3000
 #  failedAttempts: 3
 #  subscriptionsPerConnection: 5

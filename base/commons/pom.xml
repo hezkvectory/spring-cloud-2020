@@ -57,10 +57,10 @@
             <artifactId>resilience4j-spring-cloud2</artifactId>
         </dependency>-->
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>-->
+        </dependency>
 
        <!-- <dependency>
             <groupId>io.prometheus</groupId>
