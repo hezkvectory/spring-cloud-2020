@@ -37,7 +37,7 @@ public class ZkClusterManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZkClusterManager.class);
 
-    private ExecutorService executor = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors() / 2, Runtime.getRuntime().availableProcessors() / 2, 0L, TimeUnit.MILLISECONDS,
+    private ExecutorService executor = new ThreadPoolExecutor(1, 1, 60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat("TreeCache-%d").build(), new ThreadPoolExecutor.CallerRunsPolicy());
 
     public TreeCache getCache() {
@@ -80,7 +80,7 @@ public class ZkClusterManager {
         CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder()
                 .connectString("localhost:2181")
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3, 3000))
-                .namespace("hezk");
+                .namespace("");
         builder.sessionTimeoutMs(15000);
         builder.connectionTimeoutMs(3000);
         try {
@@ -124,7 +124,10 @@ public class ZkClusterManager {
             CloseableUtils.closeQuietly(client);
             closed = true;
         }
+    }
 
+    public CuratorFramework getClient() {
+        return client;
     }
 
     private void initZkNodes() throws Exception {
@@ -157,19 +160,16 @@ public class ZkClusterManager {
     public void persist(final String key, final String value) {
         try {
             if (!isExisted(key)) {
-                client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath
-                        (key, value.getBytes(Charset.forName("utf-8")));
+                client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(key, value.getBytes(Charset.forName("utf-8")));
             } else {
                 update(key, value);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public boolean isExisted(final String key) {
-
         try {
             return client.checkExists().forPath(key) != null;
         } catch (Exception e) {
@@ -180,19 +180,9 @@ public class ZkClusterManager {
 
     public void update(final String key, final String value) {
         try {
-            client.inTransaction().check().forPath(key).and().setData().forPath(key, value
-                    .getBytes(Charset.forName("UTF-8"))).and().commit();
+            client.inTransaction().check().forPath(key).and().setData().forPath(key, value.getBytes(Charset.forName("UTF-8"))).and().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-
-    private void waitForCacheClose() {
-        try {
-            Thread.sleep(500L);
-        } catch (final InterruptedException ex) {
-            Thread.currentThread().interrupt();
         }
     }
 
@@ -234,7 +224,6 @@ public class ZkClusterManager {
     }
 
     public String getDirectly(final String key) throws InterruptedException, IOException, KeeperException {
-
         try {
             return new String(client.getData().forPath(key), Charset.forName("UTF-8"));
         } catch (Exception e) {
@@ -296,11 +285,6 @@ public class ZkClusterManager {
     public void remove(final String key) throws Exception {
         client.delete().deletingChildrenIfNeeded().forPath(key);
     }
-
-    public Object getRawClient() {
-        return client;
-    }
-
 
     public void addConnectionStateListener(final ConnectionStateListener listener) {
         client.getConnectionStateListenable().addListener(listener);
