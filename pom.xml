@@ -10,7 +10,7 @@
     <version>${revision}</version>
 
     <modules>
-        <module>base</module>
+<!--        <module>base</module>-->
 <!--        <module>feign</module>-->
         <!--        <module>spring</module>-->
         <!--        <module>grpc</module>-->
@@ -19,8 +19,9 @@
         <module>shiro</module>
         <module>groovy</module>-->
 <!--        <module>redis</module>-->
-        <module>standalone</module>
-<!--              <module>io</module>-->
+<!--        <module>standalone</module>-->
+        <module>es</module>
+        <!--              <module>io</module>-->
 <!--        <module>thrift</module>-->
     </modules>
 
