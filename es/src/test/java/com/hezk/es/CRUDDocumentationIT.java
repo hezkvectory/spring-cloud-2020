@@ -8,6 +8,7 @@ import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.DocWriteRequest;
 import org.elasticsearch.action.DocWriteResponse;
+import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.bulk.*;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -76,7 +77,12 @@ public class CRUDDocumentationIT extends EsBaseTest {
         }
         builder.endObject();
 
-        System.out.println(builder.bytes().utf8ToString());
+        System.out.println(builder.toString());
+
+        RestHighLevelClient client = highLevelClient();
+        CreateIndexRequest createIndexRequest = new CreateIndexRequest();
+        createIndexRequest.index("index");
+        client.indices().create(createIndexRequest);
     }
 
     @Test
@@ -250,7 +256,7 @@ public class CRUDDocumentationIT extends EsBaseTest {
                     .field("lang", "painless")
                     .field("code", "ctx._source.field += params.count")
                     .endObject()
-                    .endObject().string();
+                    .endObject().toString();
             HttpEntity body = new NStringEntity(script, ContentType.create(xContentType.mediaType()));
             Response response = client().performRequest(HttpPost.METHOD_NAME, "/_scripts/increment-field", emptyMap(), body);
             assertEquals(response.getStatusLine().getStatusCode(), RestStatus.OK.getStatus());
@@ -883,33 +889,33 @@ public class CRUDDocumentationIT extends EsBaseTest {
                 }
             };
 
-            BulkProcessor bulkProcessor = new BulkProcessor.Builder(client::bulkAsync, listener, threadPool)
-                    .build(); // <6>
-            // end::bulk-processor-init
-            assertNotNull(bulkProcessor);
-
-            // tag::bulk-processor-add
-            IndexRequest one = new IndexRequest("posts", "doc", "1").
-                    source(XContentType.JSON, "title", "In which order are my Elasticsearch queries executed?");
-            IndexRequest two = new IndexRequest("posts", "doc", "2")
-                    .source(XContentType.JSON, "title", "Current status and upcoming changes in Elasticsearch");
-            IndexRequest three = new IndexRequest("posts", "doc", "3")
-                    .source(XContentType.JSON, "title", "The Future of Federated Search in Elasticsearch");
-
-            bulkProcessor.add(one);
-            bulkProcessor.add(two);
-            bulkProcessor.add(three);
-            // end::bulk-processor-add
-
-            // tag::bulk-processor-await
-            boolean terminated = bulkProcessor.awaitClose(30L, TimeUnit.SECONDS); // <1>
-            // end::bulk-processor-await
-            assertTrue(terminated);
-
-            // tag::bulk-processor-close
-            bulkProcessor.close();
-            // end::bulk-processor-close
-            terminate(threadPool);
+//            BulkProcessor bulkProcessor = new BulkProcessor.Builder(client::bulkAsync, listener, threadPool)
+//                    .build(); // <6>
+//            // end::bulk-processor-init
+//            assertNotNull(bulkProcessor);
+//
+//            // tag::bulk-processor-add
+//            IndexRequest one = new IndexRequest("posts", "doc", "1").
+//                    source(XContentType.JSON, "title", "In which order are my Elasticsearch queries executed?");
+//            IndexRequest two = new IndexRequest("posts", "doc", "2")
+//                    .source(XContentType.JSON, "title", "Current status and upcoming changes in Elasticsearch");
+//            IndexRequest three = new IndexRequest("posts", "doc", "3")
+//                    .source(XContentType.JSON, "title", "The Future of Federated Search in Elasticsearch");
+//
+//            bulkProcessor.add(one);
+//            bulkProcessor.add(two);
+//            bulkProcessor.add(three);
+//            // end::bulk-processor-add
+//
+//            // tag::bulk-processor-await
+//            boolean terminated = bulkProcessor.awaitClose(30L, TimeUnit.SECONDS); // <1>
+//            // end::bulk-processor-await
+//            assertTrue(terminated);
+//
+//            // tag::bulk-processor-close
+//            bulkProcessor.close();
+//            // end::bulk-processor-close
+//            terminate(threadPool);
         }
         {
             // tag::bulk-processor-listener
@@ -937,18 +943,18 @@ public class CRUDDocumentationIT extends EsBaseTest {
             // end::bulk-processor-listener
 
             ThreadPool threadPool = new ThreadPool(settings);
-            try {
-                // tag::bulk-processor-options
-                BulkProcessor.Builder builder = new BulkProcessor.Builder(client::bulkAsync, listener, threadPool);
-                builder.setBulkActions(500); // <1>
-                builder.setBulkSize(new ByteSizeValue(1L, ByteSizeUnit.MB)); // <2>
-                builder.setConcurrentRequests(0); // <3>
-                builder.setFlushInterval(TimeValue.timeValueSeconds(10L)); // <4>
-                builder.setBackoffPolicy(BackoffPolicy.constantBackoff(TimeValue.timeValueSeconds(1L), 3)); // <5>
-                // end::bulk-processor-options
-            } finally {
-                terminate(threadPool);
-            }
+//            try {
+//                // tag::bulk-processor-options
+//                BulkProcessor.Builder builder = new BulkProcessor.Builder(client::bulkAsync, listener, threadPool);
+//                builder.setBulkActions(500); // <1>
+//                builder.setBulkSize(new ByteSizeValue(1L, ByteSizeUnit.MB)); // <2>
+//                builder.setConcurrentRequests(0); // <3>
+//                builder.setFlushInterval(TimeValue.timeValueSeconds(10L)); // <4>
+//                builder.setBackoffPolicy(BackoffPolicy.constantBackoff(TimeValue.timeValueSeconds(1L), 3)); // <5>
+//                // end::bulk-processor-options
+//            } finally {
+//                terminate(threadPool);
+//            }
         }
     }
 }

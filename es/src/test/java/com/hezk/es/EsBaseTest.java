@@ -49,8 +49,9 @@ public class EsBaseTest extends Assert {
 
     @Before
     public void before() throws IOException {
+        RestClientBuilder build = null;
         if (client == null) {
-            String cluster = "172.23.104.50:9200";
+            String cluster = "192.168.2.122:9200";
             String[] stringUrls = cluster.split(",");
             List<HttpHost> hosts = new ArrayList<>(stringUrls.length);
             for (String stringUrl : stringUrls) {
@@ -63,11 +64,12 @@ public class EsBaseTest extends Assert {
                 hosts.add(new HttpHost(host, port, "http"));
             }
             clusterHosts = unmodifiableList(hosts);
-            client = buildClient(restClientSettings());
-            adminClient = buildClient(restAdminSettings());
+            build = buildClient(restClientSettings());
+            client = build.build();
+            adminClient = buildClient(restAdminSettings()).build();
         }
         if (restHighLevelClient == null) {
-            restHighLevelClient = new RestHighLevelClient(client);
+            restHighLevelClient = new RestHighLevelClient(build);
         }
     }
 
@@ -84,7 +86,7 @@ public class EsBaseTest extends Assert {
         return adminClient;
     }
 
-    private RestClient buildClient(Settings settings) throws IOException {
+    private RestClientBuilder buildClient(Settings settings) throws IOException {
         RestClientBuilder builder = RestClient.builder(clusterHosts.toArray(new HttpHost[clusterHosts.size()]));
         try (ThreadContext threadContext = new ThreadContext(settings)) {
             Header[] defaultHeaders = new Header[threadContext.getHeaders().size()];
@@ -105,7 +107,7 @@ public class EsBaseTest extends Assert {
             final TimeValue socketTimeout = TimeValue.parseTimeValue(socketTimeoutString, CLIENT_SOCKET_TIMEOUT);
             builder.setRequestConfigCallback(conf -> conf.setSocketTimeout(Math.toIntExact(socketTimeout.getMillis())));
         }
-        return builder.build();
+        return builder;
     }
 
     protected Settings restAdminSettings() {
@@ -117,16 +119,16 @@ public class EsBaseTest extends Assert {
     }
 
 
-    public Map<String, Object> entityAsMap(Response response) throws IOException {
-        XContentType xContentType = XContentType.fromMediaTypeOrFormat(response.getEntity().getContentType().getValue());
-        try (XContentParser parser = createParser(xContentType.xContent(), response.getEntity().getContent())) {
-            return parser.map();
-        }
-    }
+//    public Map<String, Object> entityAsMap(Response response) throws IOException {
+//        XContentType xContentType = XContentType.fromMediaTypeOrFormat(response.getEntity().getContentType().getValue());
+//        try (XContentParser parser = createParser(xContentType.xContent(), response.getEntity().getContent())) {
+//            return parser.map();
+//        }
+//    }
 
-    protected final XContentParser createParser(XContent xContent, InputStream data) throws IOException {
-        return xContent.createParser(xContentRegistry(), data);
-    }
+//    protected final XContentParser createParser(XContent xContent, InputStream data) throws IOException {
+//        return xContent.createParser(xContentRegistry(), data);
+//    }
 
     protected NamedXContentRegistry xContentRegistry() {
         return new NamedXContentRegistry(ClusterModule.getNamedXWriteables());
