@@ -13,12 +13,12 @@ import org.apache.zookeeper.KeeperException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.commons.util.InetUtils;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -72,9 +72,6 @@ public class ZkClusterManager {
      */
     public static final String MONITOR_LOCK_MINUTE = "/lock/minute/";
 
-    @Autowired
-    private InetUtils inet;
-
     @PostConstruct
     public void init() {
         CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder()
@@ -98,12 +95,12 @@ public class ZkClusterManager {
     }
 
     @PreDestroy
-    public void close() {
+    public void close() throws UnknownHostException {
         if (closed) {
             return;
         }
         LOGGER.info("closeing zk-client");
-        String address = inet.findFirstNonLoopbackAddress().getHostAddress();
+        String address = InetAddress.getLocalHost().getHostAddress();
         try {
             LOGGER.info("remove SCHEDULE_IP_PATH:{}", String.format(SCHEDULE_IP_PATH, address));
             //zk自动移除机制有延迟 手动关闭

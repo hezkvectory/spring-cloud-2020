@@ -15,7 +15,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Component
+//@Component
 public class KafkaConsumerRunner implements ApplicationRunner {
 
     @Autowired
