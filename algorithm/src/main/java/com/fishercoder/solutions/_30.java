@@ -1,0 +1,64 @@
+package com.fishercoder.solutions;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 30. Substring with Concatenation of All Words
+ * <p>
+ * You are given a string, s, and a list of words, words, that are all of the same length.
+ * Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.
+ * <p>
+ * For example, given:
+ * s: "barfoothefoobarman"
+ * words: ["foo", "bar"]
+ * <p>
+ * You should return the indices: [0,9].
+ * (order does not matter).
+ */
+public class _30 {
+
+    public static class Solution1 {
+
+        public List<Integer> findSubstring(String s, String[] words) {
+            Map<String, Integer> map = new HashMap<>();
+            for (String word : words) {
+                map.put(word, map.getOrDefault(word, 0) + 1);
+            }
+
+            List<Integer> result = new ArrayList<>();
+            int startIndex = 0;
+            int wordLen = words.length;
+            for (int i = 0; i < s.length(); i++) {
+                startIndex = i;
+                Map<String, Integer> clone = new HashMap<>(map);
+                int matchedWord = 0;
+                for (int j = i + wordLen; j < s.length(); j += wordLen) {
+                    String word = s.substring(i, j);
+                    if (clone.containsKey(word)) {
+                        clone.put(word, clone.get(word) - 1);
+                        i = j;
+                        matchedWord++;
+                    }
+                    if (matchedWord == wordLen) {
+                        boolean all = true;
+                        for (String key : clone.keySet()) {
+                            if (clone.get(key) != 0) {
+                                all = false;
+                                break;
+                            }
+                        }
+                        if (all) {
+                            result.add(startIndex);
+                        }
+                        matchedWord = 0;
+                    }
+                }
+            }
+            return result;
+        }
+    }
+
+}
