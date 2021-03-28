@@ -62,4 +62,23 @@ public class _122 {
             return sells[prices.length - 1];
         }
     }
+
+    public static class Solution {
+        public int maxProfit(int[] prices) {
+            int ans = 0;
+            int n = prices.length;
+            for (int i = 1; i < n; ++i) {
+                ans += Math.max(0, prices[i] - prices[i - 1]);
+            }
+            return ans;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] prices={7,1,5,3,6,4};
+        System.out.println(new Solution().maxProfit(prices));
+    }
+
+    //https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/solution/tan-xin-suan-fa-by-liweiwei1419-2/
+
 }
