@@ -1,5 +1,9 @@
 package com.hezk.standalone.controller;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.google.gson.annotations.SerializedName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,4 +65,40 @@ public class IndexController {
     }
 
 
+    @GetMapping("/json")
+    public Person json(){
+        Person p = new Person();
+        p.setUsername("h");
+        p.setAge(1);
+        return p;
+    }
+
+
+    static class Person{
+        @SerializedName("_username")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty("_redirect_url")
+        String username;
+        int age;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public String getInfo(){
+            return this.username + ":" + this.age;
+        }
+    }
 }

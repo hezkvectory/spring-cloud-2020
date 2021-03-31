@@ -21,4 +21,9 @@ public class EqualsTest {
         System.out.println(l1 == l2);
         System.out.println(l3 == l4);
     }
+
+    @Test
+    public void test2(){
+        System.out.println(1<<20);
+    }
 }

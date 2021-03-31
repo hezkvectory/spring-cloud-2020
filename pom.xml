@@ -12,9 +12,9 @@
     <modules>
 <!--        <module>base</module>-->
 <!--        <module>feign</module>-->
-        <!--        <module>spring</module>-->
+                <module>spring</module>
         <!--        <module>grpc</module>-->
-<!--               <module>jvm</module>-->
+       <module>jvm</module>
         <!-- <module>gateway</module>
         <module>shiro</module>
         <module>groovy</module>-->
