@@ -1,13 +1,18 @@
 package com.hezk.commons.h2.configuration;
 
+import org.springframework.boot.actuate.autoconfigure.metrics.AutoTimeProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 @ConfigurationProperties(prefix = "mybatis.metrics")
 public class MybatisMetricsProperties {
 
-    boolean enabled = false;
+    private boolean enabled = false;
 
-    String metricName = "mybatis.requests";
+    private String metricName = "mybatis.requests";
+
+    @NestedConfigurationProperty
+    private final AutoTimeProperties autotime = new AutoTimeProperties();
 
     public boolean isEnabled() {
         return enabled;
@@ -23,5 +28,9 @@ public class MybatisMetricsProperties {
 
     public void setMetricName(String metricName) {
         this.metricName = metricName;
+    }
+
+    public AutoTimeProperties getAutotime() {
+        return autotime;
     }
 }

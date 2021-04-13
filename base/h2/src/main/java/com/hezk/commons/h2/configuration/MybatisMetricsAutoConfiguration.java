@@ -1,7 +1,6 @@
 package com.hezk.commons.h2.configuration;
 
 import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
@@ -19,13 +18,16 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(MybatisMetricsProperties.class)
 public class MybatisMetricsAutoConfiguration {
 
-    @Autowired
     private MybatisMetricsProperties mybatisMetricsProperties;
+
+    public MybatisMetricsAutoConfiguration(MybatisMetricsProperties mybatisMetricsProperties) {
+        this.mybatisMetricsProperties = mybatisMetricsProperties;
+    }
 
     @Bean
     @ConditionalOnProperty(name = "mybatis.metrics.enabled", havingValue = "true")
     public MybatisMetricsPlugin mybatisProfilerPlugin(MeterRegistry registry) {
-        return new MybatisMetricsPlugin(registry, mybatisMetricsProperties.getMetricName());
+        return new MybatisMetricsPlugin(registry, mybatisMetricsProperties.getMetricName(), mybatisMetricsProperties.getAutotime());
     }
 
 }
