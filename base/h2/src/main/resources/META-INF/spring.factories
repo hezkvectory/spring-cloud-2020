@@ -1,2 +1,6 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
 com.hezk.commons.h2.configuration.H2EnvironmentPostProcessor
+
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.hezk.commons.h2.configuration.MybatisMetricsAutoConfiguration

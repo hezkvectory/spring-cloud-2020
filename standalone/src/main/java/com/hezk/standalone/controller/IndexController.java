@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.gson.annotations.SerializedName;
+import com.hezk.h2.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.management.MBeanServer;
+import java.lang.management.ManagementFactory;
 
 
 @RequestMapping("/")
@@ -16,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+
+    @Autowired
+    private UserMapper userMapper;
 
     @GetMapping({"/", "/index"})
     public String index() {
@@ -26,6 +34,8 @@ public class IndexController {
         LOGGER.info("info....");
         LOGGER.warn("warn....");
         LOGGER.error("error....");
+
+        MBeanServer mserver = ManagementFactory.getPlatformMBeanServer();
         return "index";
     }
 
@@ -48,6 +58,7 @@ public class IndexController {
     @GetMapping("/sleep100")
     public String sleep100(){
         try {
+            userMapper.findById(1);
             Thread.sleep(100L);
         } catch (InterruptedException e) {
         }
