@@ -46,6 +46,9 @@ public class MybatisMetricsPlugin implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        if (!this.autoTimer.isEnabled()) {
+            return invocation.proceed();
+        }
         Timer.Sample timerSample = Timer.start(this.registry);
         final Object[] args = invocation.getArgs();
         if (args != null && args.length > 0) {

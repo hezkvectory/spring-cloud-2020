@@ -21,9 +21,10 @@
         <module>redis</module>
         <module>es</module>
         <module>algorithm</module>
+        <module>thrift</module>
+        <module>standalone</module>-->
         <module>io</module>
-        <module>thrift</module>-->
-        <module>standalone</module>
+        <module>io/telnet</module>
     </modules>
 
     <properties>

@@ -25,12 +25,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-//@Component
+@Component
 public class PrometheusTomcat implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PrometheusTomcat.class);
 
-    private static final ScheduledExecutorService pool = (ScheduledExecutorService) Executors.newScheduledThreadPool(1);
+    private static final ScheduledExecutorService pool = Executors.newScheduledThreadPool(1);
 
     private static final String CONNECTIONCOUNT_KEY = "connectionCount";
     private static final String CURRENTTHREADCOUNT_KEY = "currentThreadCount";
@@ -142,22 +142,13 @@ public class PrometheusTomcat implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
-        pool.scheduleAtFixedRate(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    List<Meter> meters = meterRegistry.getMeters();
-                    for(Meter meter : meters) {
-                        System.out.println(meter.getId());
-                    }
-//                    execute();
-                } catch (Exception e) {
-                    LOGGER.error("tomcat获取指标定时器异常", e);
-                }
-
+        pool.scheduleAtFixedRate(() -> {
+            try {
+                execute();
+            } catch (Exception e) {
+                LOGGER.error("tomcat获取指标定时器异常", e);
             }
+
         }, 1, 10, TimeUnit.SECONDS);
 
     }
