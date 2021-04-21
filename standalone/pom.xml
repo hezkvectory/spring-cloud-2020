@@ -119,6 +119,12 @@
             <artifactId>apm-toolkit-trace</artifactId>
             <version>8.0.1</version>
         </dependency>-->
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

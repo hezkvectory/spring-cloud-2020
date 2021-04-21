@@ -10,21 +10,20 @@
     <version>${revision}</version>
 
     <modules>
-        <module>base</module>
+<!--        <module>base</module>-->
 <!--        <module>feign</module>-->
         <module>spring</module>
+<!--        <module>jvm</module>-->
     <!--    <module>grpc</module>
-        <module>jvm</module>
         <module>gateway</module>
         <module>shiro</module>
         <module>groovy</module>
         <module>redis</module>
         <module>es</module>
         <module>algorithm</module>
-        <module>thrift</module>
-        <module>standalone</module>-->
-        <module>io</module>
-        <module>io/telnet</module>
+        <module>standalone</module>
+        <module>thrift</module>-->
+<!--        <module>io</module>-->
     </modules>
 
     <properties>
@@ -124,6 +123,12 @@
                 <groupId>io.github.resilience4j</groupId>
                 <artifactId>resilience4j-spring-cloud2</artifactId>
                 <version>${resilience4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.58</version>
             </dependency>
 
             <dependency>

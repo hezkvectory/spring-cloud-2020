@@ -1,0 +1,110 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kill
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/db_second_kill?useUnicode=true&amp;characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  rabbitmq:
+    virtual-host: /
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 20
+        max-concurrency: 30
+        prefetch: 15
+  mail:
+    host: smtp.qq.com
+    username: 2645293695@qq.com
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  check-config-location: true
+  mapper-locations: classpath:mappers/*.xml
+
+redis:
+  config:
+    host: redis://127.0.0.1:6379
+
+zk:
+  host: 127.0.0.1:2181
+  namespace: kill
+
+mq:
+  env: test
+  kill:
+    item:
+      execute:
+        limit:
+          queue:
+            name: ${mq.env}.kill.item.execute.limit.queue
+            exchange: ${mq.env}.kill.item.execute.limit.exchange
+            routing:
+              key: ${mq.env}.kill.item.execute.limit.routing.key
+      success:
+        kill:
+          expire: 3600000
+        email:
+          queue: ${mq.env}.kill.item.success.email.queue
+          exchange: ${mq.env}.kill.item.success.email.exchange
+          routing:
+            key: ${mq.env}.kill.item.success.email.routing.key
+        dead:
+          queue: ${mq.env}.kill.item.success.dead.queue
+          exchange: ${mq.env}.kill.item.success.dead.exchange
+          routing:
+            key: ${mq.env}.kill.item.success.dead.routing.key
+          real:
+            queue: ${mq.env}.kill.item.success.kill.dead.real.queue
+          prod:
+            exchange: ${mq.env}.kill.item.success.kill.dead.prod.exchange
+            routing:
+              key: ${mq.env}.kill.item.success.kill.dead.prod.routing.key
+
+scheduler:
+  expire:
+    orders:
+      time: 30
+
+mail:
+  send:
+    from: 2645293695@qq.com
+  kill:
+    item:
+      success:
+        subject: \u5546\u54C1\u62A2\u8D2D\u6210\u529F
+        content: \u60A8\u597D\uFF0C\u60A8\u5DF2\u6210\u529F\u62A2\u8D2D\u5230\u5546\u54C1
+
+notice:
+  kill:
+    item:
+      success:
+        content: \u60A8\u597D\uFF0C\u60A8\u5DF2\u6210\u529F\u62A2\u8D2D\u5230\u5546\u54C1
+      fail:
+        content: \u5F88\u62B1\u6B49\uFF0C\u60A8\u5F53\u524D\u5728\u79D2\u6740\u7684\u5546\u54C1\u5DF2\u88AB\u62A2\u8D2D\u5B8C\u6BD5\uFF0C\u6B22\u8FCE\u4E0B\u6B21\u5149\u4E34\uFF0C\u795D\u4F60\u751F\u6D3B\u6109\u5FEB\uFF01
+
+system:
+  domain:
+    url: http://localhost:8092/kill
+
+
