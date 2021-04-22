@@ -2,9 +2,10 @@ package com.hezk.kill.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ItemKill {
+public class ItemKill implements Serializable {
     private Integer id;
 
     private Integer itemId;

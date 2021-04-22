@@ -2,7 +2,6 @@
 <configuration scan="true" scanPeriod="10 seconds">
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <conversionRule conversionWord="m" converterClass="ch.qos.logback.classic.pattern.ComplexMessageConverter"/>
 
     <property name="log.path" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/}"/>
 

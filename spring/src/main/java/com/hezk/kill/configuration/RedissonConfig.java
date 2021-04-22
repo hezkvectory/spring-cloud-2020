@@ -10,16 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedissonConfig {
 
-    @Value("redis.config.host")
+    @Value("${redis.config.host}")
     String redisHost;
-
-    @Value("spring.redis.password")
-    String redisPassword;
 
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
-        config.useSingleServer().setAddress(redisHost).setPassword(redisPassword);
+        config.useSingleServer().setAddress(redisHost);
         RedissonClient client = Redisson.create(config);
         return client;
     }

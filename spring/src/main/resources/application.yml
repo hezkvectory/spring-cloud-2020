@@ -8,15 +8,20 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/db_second_kill?useUnicode=true&amp;characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    hikari:
+      jdbc-url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root@!#123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     username: root
-    password: root
+    password: root@!#123
   redis:
-    host: 127.0.0.1
+    host: 10.33.1.11
     port: 6379
   rabbitmq:
-    virtual-host: /
-    host: 127.0.0.1
+    virtual-host: default
+    host: 10.33.1.11
     port: 5672
     username: guest
     password: guest
@@ -40,14 +45,14 @@ spring:
 mybatis:
   config-location: classpath:mybatis-config.xml
   check-config-location: true
-  mapper-locations: classpath:mappers/*.xml
+#  mapper-locations: classpath:mappers/*.xml
 
 redis:
   config:
-    host: redis://127.0.0.1:6379
+    host: redis://10.33.1.11:6379
 
 zk:
-  host: 127.0.0.1:2181
+  host: 10.33.1.11:2181
   namespace: kill
 
 mq:
@@ -64,6 +69,17 @@ mq:
       success:
         kill:
           expire: 3600000
+          dead:
+            queue: ${mq.env}.kill.item.success.dead.queue
+            exchange: ${mq.env}.kill.item.success.dead.exchange
+            routing:
+              key: ${mq.env}.kill.item.success.dead.routing.key
+            real:
+              queue: ${mq.env}.kill.item.success.kill.dead.real.queue
+            prod:
+              exchange: ${mq.env}.kill.item.success.kill.dead.prod.exchange
+              routing:
+                key: ${mq.env}.kill.item.success.kill.dead.prod.routing.key
         email:
           queue: ${mq.env}.kill.item.success.email.queue
           exchange: ${mq.env}.kill.item.success.email.exchange

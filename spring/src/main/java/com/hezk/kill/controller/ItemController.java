@@ -1,13 +1,15 @@
 package com.hezk.kill.controller;
 
 import com.hezk.kill.domain.ItemKill;
+import com.hezk.kill.response.Result;
+import com.hezk.kill.response.ResultBuilder;
 import com.hezk.kill.service.IItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,37 +27,37 @@ public class ItemController {
     /**
      * 获取商品列表
      */
+    @ResponseBody
     @GetMapping(value = {"/", "/index", prefix + "/list", prefix + "/index.html"})
-    public String list(ModelMap modelMap) {
+    public Result list() {
         try {
             //获取待秒杀商品列表
             List<ItemKill> list = itemService.getKillItems();
-            modelMap.put("list", list);
-
             log.info("获取待秒杀商品列表-数据：{}", list);
+            return ResultBuilder.success().putData("list", list);
         } catch (Exception e) {
             log.error("获取待秒杀商品列表-发生异常：", e.fillInStackTrace());
-            return "redirect:/base/error";
         }
-        return "list";
+        return ResultBuilder.systemError();
     }
 
     /**
      * 获取待秒杀商品的详情
      */
+    @ResponseBody
     @GetMapping(value = prefix + "/detail/{id}")
-    public String detail(@PathVariable Integer id, ModelMap modelMap) {
+    public Result detail(@PathVariable Integer id) {
         if (id == null || id <= 0) {
-            return "redirect:/base/error";
+            return ResultBuilder.parameterError();
         }
         try {
             ItemKill detail = itemService.getKillDetail(id);
-            modelMap.put("detail", detail);
+
+            return ResultBuilder.success().putData("detail", detail);
         } catch (Exception e) {
             log.error("获取待秒杀商品的详情-发生异常：id={}", id, e.fillInStackTrace());
-            return "redirect:/base/error";
         }
-        return "info";
+        return ResultBuilder.parameterError();
     }
 }
 

@@ -91,8 +91,8 @@ CREATE TABLE `user` (
   `phone` varchar(50) NOT NULL COMMENT '手机号',
   `email` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT '邮箱',
   `is_active` tinyint(11) DEFAULT '1' COMMENT '是否有效(1=是；0=否)',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_name` (`user_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
@@ -101,3 +101,40 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('10', 'debug', '80bab46abb7b1c4013f9971b8bec3868', '15627280601', '1948831260@qq.com', '1', null, null);
+
+
+CREATE TABLE `tb_newbee_mall_order_item` (
+ `order_item_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+ `order_id` bigint(20) DEFAULT NULL,
+ `goods_id` bigint(20) DEFAULT NULL,
+ `goods_name` varchar(128) DEFAULT NULL,
+ `goods_cover_img` varchar(128) DEFAULT NULL,
+ `selling_price` int(11) DEFAULT NULL,
+ `goods_count` int(11) DEFAULT NULL,
+ `create_time` timestamp NULL DEFAULT NULL,
+ PRIMARY KEY (`order_item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `tb_newbee_mall_order` (
+    `order_id` int(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+    `order_no` varchar(100) DEFAULT NULL,
+    `user_id` int(11) DEFAULT NULL,
+    `total_price` int(11) DEFAULT NULL,
+    `pay_status` tinyint(1) DEFAULT NULL ,
+    `pay_type` tinyint(11) DEFAULT '1',
+    `pay_time` datetime DEFAULT NULL,
+    `order_status` tinyint(11) DEFAULT NULL,
+    `extra_info` varchar(1000) DEFAULT NULL,
+    `user_address` varchar(1000) DEFAULT NULL,
+    `is_deleted` tinyint(1) DEFAULT NULL,
+    `create_time` timestamp NULL DEFAULT NULL,
+    `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+TRUNCATE table item_kill_success;
+TRUNCATE table tb_newbee_mall_order;
+TRUNCATE table tb_newbee_mall_order_item;

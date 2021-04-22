@@ -12,6 +12,12 @@
         <package name="com.vipkid.kill.domain"/>
     </typeAliases>
     <mappers>
-        <mapper resource="mapper/diagnostic-mapper.xml"/>
+        <mapper resource="mappers/ItemKillMapper.xml"/>
+        <mapper resource="mappers/ItemKillSuccessMapper.xml"/>
+        <mapper resource="mappers/ItemMapper.xml"/>
+        <mapper resource="mappers/NewBeeMallOrderItemMapper.xml"/>
+        <mapper resource="mappers/NewBeeMallOrderMapper.xml"/>
+        <mapper resource="mappers/RandomCodeMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
     </mappers>
 </configuration>

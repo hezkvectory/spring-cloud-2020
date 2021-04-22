@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ZooKeeperConfig {
 
-    @Value("zk.host")
+    @Value("${zk.host}")
     String zkHost;
 
-    @Value("zk.namespace")
+    @Value("${zk.namespace}")
     String zkNamespace;
 
     @Bean

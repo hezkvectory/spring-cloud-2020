@@ -24,7 +24,7 @@
     delete from item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.debug.kill.model.entity.Item" >
+  <insert id="insert" parameterType="com.hezk.kill.domain.Item" >
     insert into item (id, name, code, 
       stock, purchase_time, is_active, 
       create_time, update_time)

@@ -6,6 +6,8 @@ import com.hezk.kill.dto.KillSuccessUserInfo;
 import com.hezk.kill.enums.StatusCode;
 import com.hezk.kill.mapper.ItemKillSuccessMapper;
 import com.hezk.kill.response.BaseResponse;
+import com.hezk.kill.response.Result;
+import com.hezk.kill.response.ResultBuilder;
 import com.hezk.kill.service.IKillService;
 import com.hezk.kill.service.RabbitSenderService;
 import org.apache.commons.lang3.StringUtils;
@@ -42,26 +44,25 @@ public class KillController {
      */
     @PostMapping(value = prefix + "/execute")
     @ResponseBody
-    public BaseResponse execute(@RequestBody @Validated KillDto dto, BindingResult result, HttpServletRequest request) throws LoginException {
+    public Result execute(@RequestBody @Validated KillDto dto, BindingResult result, HttpServletRequest request) throws LoginException {
         String _userId = request.getHeader("userId");
         if (Objects.isNull(_userId)) {
-            throw new LoginException("用户没登录！");
+            return ResultBuilder.validateFailure("用户没登录");
         }
         if (result.hasErrors() || dto.getKillId() <= 0) {
-            return new BaseResponse(StatusCode.InvalidParams);
+            return ResultBuilder.validateFailure("参数错误");
         }
         Integer userId = Integer.valueOf(_userId);
 
-        BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             Boolean res = killService.killItem(dto.getKillId(), userId);
             if (!res) {
-                return new BaseResponse(StatusCode.Fail.getCode(), "哈哈~商品已抢购完毕或者不在抢购时间段哦!");
+                return ResultBuilder.systemError("哈哈~商品已抢购完毕或者不在抢购时间段哦!");
             }
+            return ResultBuilder.success();
         } catch (Exception e) {
-            response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
+            return ResultBuilder.systemError(e.getMessage());
         }
-        return response;
     }
 
 
@@ -70,17 +71,13 @@ public class KillController {
      */
     @PostMapping(value = prefix + "/execute/lock")
     @ResponseBody
-    public BaseResponse executeLock(@RequestBody @Validated KillDto dto, BindingResult result) {
+    public Result executeLock(@RequestBody @Validated KillDto dto, BindingResult result) {
         if (result.hasErrors() || dto.getKillId() <= 0) {
-            return new BaseResponse(StatusCode.InvalidParams);
+            return ResultBuilder.validateFailure("参数不合法");
         }
-        BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             //不加分布式锁的前提
-            /*Boolean res=killService.killItemV2(dto.getKillId(),dto.getUserId());
-            if (!res){
-                return new BaseResponse(StatusCode.Fail.getCode(),"不加分布式锁-哈哈~商品已抢购完毕或者不在抢购时间段哦!");
-            }*/
+            Boolean res = killService.killItemV2(dto.getKillId(), dto.getUserId());
 
             //基于Redis的分布式锁进行控制
             /*Boolean res=killService.killItemV3(dto.getKillId(),dto.getUserId());
@@ -95,15 +92,14 @@ public class KillController {
             }*/
 
             //基于ZooKeeper的分布式锁进行控制
-            Boolean res = killService.killItemV5(dto.getKillId(), dto.getUserId());
+//            Boolean res = killService.killItemV5(dto.getKillId(), dto.getUserId());
             if (!res) {
-                return new BaseResponse(StatusCode.Fail.getCode(), "基于ZooKeeper的分布式锁进行控制-哈哈~商品已抢购完毕或者不在抢购时间段哦!");
+                return ResultBuilder.systemError("商品已抢购完毕或者不在抢购时间段哦!");
             }
-
+            return ResultBuilder.success();
         } catch (Exception e) {
-            response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
+            return ResultBuilder.rejectionError(e.getMessage());
         }
-        return response;
     }
 
 

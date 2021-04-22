@@ -13,6 +13,7 @@
 <!--        <module>base</module>-->
 <!--        <module>feign</module>-->
         <module>spring</module>
+        <module>standalone</module>
 <!--        <module>jvm</module>-->
     <!--    <module>grpc</module>
         <module>gateway</module>
@@ -21,7 +22,6 @@
         <module>redis</module>
         <module>es</module>
         <module>algorithm</module>
-        <module>standalone</module>
         <module>thrift</module>-->
 <!--        <module>io</module>-->
     </modules>
