@@ -1,9 +1,5 @@
 package com.hezk.kill.response;
 
-/**
- * @author liuguanqing
- * created 2018/11/29 5:31 PM
- **/
 public final class ResultBuilder {
 
 

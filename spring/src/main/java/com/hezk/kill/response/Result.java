@@ -13,8 +13,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * @author liuguanqing
- * created 2018/11/10 4:30 PM
  * 通用REST请求结果格式，支持debug模式，debug模式下可以输出
  **/
 public class Result implements Serializable {
