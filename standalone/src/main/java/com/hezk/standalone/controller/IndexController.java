@@ -2,7 +2,6 @@ package com.hezk.standalone.controller;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.gson.annotations.SerializedName;
 import com.hezk.h2.mapper.UserMapper;
 import org.slf4j.Logger;

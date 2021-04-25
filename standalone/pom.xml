@@ -14,12 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.hezk.cloud</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>h2</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hezk.cloud</groupId>
-            <artifactId>h2</artifactId>
+            <artifactId>commons</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>

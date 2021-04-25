@@ -2,11 +2,19 @@ server:
   port: 8080
 
 spring:
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+      static-path-pattern: /static/**
   application:
     name: kill
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  session:
+#    store-type: redis
+    timeout: 3600
   datasource:
     hikari:
       jdbc-url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
@@ -19,6 +27,14 @@ spring:
   redis:
     host: 10.33.1.11
     port: 6379
+    database: 0
+#    lettuce:
+#      pool:
+#        max-wait: 16
+#        max-active: 16
+#        max-idle: 16
+#        min-idle: 1
+#      shutdown-timeout: 1000ms  # 关闭超时时间
   rabbitmq:
     virtual-host: default
     host: 10.33.1.11
@@ -46,6 +62,11 @@ mybatis:
   config-location: classpath:mybatis-config.xml
   check-config-location: true
 #  mapper-locations: classpath:mappers/*.xml
+
+security:
+  basic:
+    enabled: true
+
 
 redis:
   config:
