@@ -20,29 +20,29 @@ spring:
 #      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 management:
-#  metrics:
-#    distribution:
-#      percentiles-histogram:
-#        http: true
-#        mybatis.requests: true
-#      slo:
-#        http: 100ms,200ms,400ms,700ms
-#        mybatis.requests: 100ms,200ms,400ms,700ms
-#      percentiles:
-#        all: 0.5,0.9,0.95,0.99,0.999
-#      minimum-expected-value:
-#        http: 25ms
-#        mybatis.requests: 25ms
-#      maximum-expected-value:
-#        http: 5s
-#        mybatis.requests: 5s
-#    web:
-#      server:
-#        request:
-#          autotime:
-#            percentiles-histogram: true
-#    tags:
-#      application: ${spring.application.name}
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http: true
+        mybatis.requests: true
+      slo:
+        http: 100ms,200ms,400ms,700ms
+        mybatis.requests: 100ms,200ms,400ms,700ms
+      percentiles:
+        all: 0.5,0.9,0.95,0.99,0.999
+      minimum-expected-value:
+        http: 25ms
+        mybatis.requests: 25ms
+      maximum-expected-value:
+        http: 5s
+        mybatis.requests: 5s
+    web:
+      server:
+        request:
+          autotime:
+            percentiles-histogram: true
+    tags:
+      application: ${spring.application.name}
   health:
     probes:
       enabled: true

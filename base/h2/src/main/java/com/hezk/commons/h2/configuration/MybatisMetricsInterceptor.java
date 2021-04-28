@@ -30,7 +30,7 @@ import java.util.Properties;
                         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
         }
 )
-public class MybatisMetricsPlugin implements Interceptor {
+public class MybatisMetricsInterceptor implements Interceptor {
 
     private final MeterRegistry registry;
 
@@ -38,7 +38,7 @@ public class MybatisMetricsPlugin implements Interceptor {
 
     private final AutoTimer autoTimer;
 
-    public MybatisMetricsPlugin(MeterRegistry registry, String metricName, AutoTimer autoTimer) {
+    public MybatisMetricsInterceptor(MeterRegistry registry, String metricName, AutoTimer autoTimer) {
         this.registry = registry;
         this.metricName = metricName;
         this.autoTimer = autoTimer;

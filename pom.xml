@@ -12,9 +12,10 @@
     <modules>
         <module>base</module>
 <!--        <module>feign</module>-->
-        <module>spring</module>
+<!--        <module>spring-container</module>-->
         <module>standalone</module>
-<!--        <module>jvm</module>-->
+<!--        <module>design-pattern</module>-->
+        <!--        <module>jvm</module>-->
     <!--    <module>grpc</module>
         <module>gateway</module>
         <module>shiro</module>

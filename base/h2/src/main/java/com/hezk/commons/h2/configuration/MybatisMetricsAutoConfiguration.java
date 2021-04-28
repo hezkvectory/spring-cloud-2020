@@ -26,8 +26,8 @@ public class MybatisMetricsAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(name = "mybatis.metrics.enabled", havingValue = "true")
-    public MybatisMetricsPlugin mybatisProfilerPlugin(MeterRegistry registry) {
-        return new MybatisMetricsPlugin(registry, mybatisMetricsProperties.getMetricName(), mybatisMetricsProperties.getAutotime());
+    public MybatisMetricsInterceptor mybatisProfilerPlugin(MeterRegistry registry) {
+        return new MybatisMetricsInterceptor(registry, mybatisMetricsProperties.getMetricName(), mybatisMetricsProperties.getAutotime());
     }
 
 }

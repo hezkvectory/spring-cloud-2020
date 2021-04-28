@@ -17,24 +17,25 @@ public class ProxyFactoryTest {
         factory.setTarget(new ChromeBrowser());
         // 3.设置代理实现接口
         factory.setInterfaces(new Class[]{Browser.class});
-        // 4.添加前置增强
-        factory.addAdvice(new BrowserBeforeAdvice());
-        // 5.添加后置增强
-        factory.addAdvice(new BrowserAfterReturningAdvice());
+//        // 4.添加前置增强
+//        factory.addAdvice(new BrowserBeforeAdvice());
+//        // 5.添加后置增强
+//        factory.addAdvice(new BrowserAfterReturningAdvice());
 
-//        // 创建正则表达式切面类
-//        RegexpMethodPointcutAdvisor advisor = new RegexpMethodPointcutAdvisor();
-//        // 添加环绕增强
-//        advisor.setAdvice(new BrowserAroundAdvice());
-//        // 设置切入点正则表达式
-//        advisor.setPattern("com.hezk.aop.service.ChromeBrowser.visitInternet");
-//        factory.addAdvisor(advisor);
-//        factory.setProxyTargetClass(true);
+        // 创建正则表达式切面类
+        RegexpMethodPointcutAdvisor advisor = new RegexpMethodPointcutAdvisor();
+        // 添加环绕增强
+        advisor.setAdvice(new BrowserAroundAdvice());
+        // 设置切入点正则表达式
+        advisor.setPattern("com.hezk.aop.service.ChromeBrowser.visitInternet");
+        factory.addAdvisor(advisor);
+        factory.setProxyTargetClass(true);
 
         // 6.获取代理对象
         Browser browser = (Browser) factory.getProxy();
 
-        browser.visitInternet();
-//        browser.hello();
+//        browser.visitInternet();
+        System.out.println("====================================");
+        browser.hello();
     }
 }
