@@ -15,15 +15,15 @@ spring:
   session:
 #    store-type: redis
     timeout: 3600
-  datasource:
-    hikari:
-      jdbc-url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
-      username: root
-      password: root@!#123
-      driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: root@!#123
+#  datasource:
+#    hikari:
+#      jdbc-url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+#      username: root
+#      password: root@!#123
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://10.33.1.11:3306/db_second_kill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+#    username: root
+#    password: root@!#123
   redis:
     host: 10.33.1.11
     port: 6379
@@ -58,9 +58,9 @@ spring:
             enable: true
             required: true
 
-mybatis:
-  config-location: classpath:mybatis-config.xml
-  check-config-location: true
+#mybatis:
+#  config-location: classpath:mybatis-config.xml
+#  check-config-location: true
 #  mapper-locations: classpath:mappers/*.xml
 
 security:

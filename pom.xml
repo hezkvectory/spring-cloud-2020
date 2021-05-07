@@ -10,9 +10,9 @@
     <version>${revision}</version>
 
     <modules>
-        <module>base</module>
+<!--        <module>base</module>-->
 <!--        <module>feign</module>-->
-<!--        <module>spring-container</module>-->
+        <module>spring-container</module>
 <!--        <module>standalone</module>-->
 <!--        <module>design-pattern</module>-->
         <!--        <module>jvm</module>-->
@@ -24,7 +24,7 @@
         <module>es</module>
         <module>algorithm</module>
         <module>thrift</module>-->
-        <module>io</module>
+<!--        <module>io</module>-->
     </modules>
 
     <properties>

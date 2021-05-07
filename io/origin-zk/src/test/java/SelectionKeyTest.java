@@ -10,6 +10,11 @@ public class SelectionKeyTest {
     int expirationInterval = 10000;
 
     @Test
+    public void test1(){
+        System.out.println(1 << 5);
+    }
+
+    @Test
     public void test() {
         System.out.println(SelectionKey.OP_READ);
     }

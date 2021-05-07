@@ -1,14 +1,14 @@
 package com.hezk.aop.proxy;
 
-import com.hezk.aop.service.ChromeBrowser;
+import com.hezk.aop.service.impl.ChromeBrowser;
 import org.springframework.aop.framework.AopProxy;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.context.annotation.*;
 
-@ComponentScan("com.hezk.aop")
-@Configuration(proxyBeanMethods = false)
-@EnableAspectJAutoProxy(proxyTargetClass = true)
+//@ComponentScan("com.hezk.aop")
+//@Configuration(proxyBeanMethods = false)
+//@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ProxyFactoryAnnotationTest {
 
     public static void main(String[] args) {
