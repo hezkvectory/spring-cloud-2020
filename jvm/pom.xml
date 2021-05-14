@@ -13,10 +13,10 @@
     <packaging>pom</packaging>
 
     <modules>
-<!--        <module>asm</module>-->
+        <module>asm</module>
 <!--        <module>bytebuddy</module>-->
 <!--        <module>javassist</module>-->
-        <module>jvm-lecture</module>
+<!--        <module>jvm-lecture</module>-->
     </modules>
 
 

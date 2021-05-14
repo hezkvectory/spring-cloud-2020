@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 
 @MapperScan(basePackages = {"com.hezk.h2.mapper"})
-@SpringBootApplication(exclude = {KafkaAutoConfiguration.class},
+@SpringBootApplication(//exclude = {KafkaAutoConfiguration.class},
         scanBasePackages = {"com.hezk.standalone", "com.hezk.h2"})
 public class Application {
 

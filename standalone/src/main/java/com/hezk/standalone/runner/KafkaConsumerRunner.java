@@ -31,7 +31,7 @@ public class KafkaConsumerRunner implements ApplicationRunner {
         kafkaProps.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         kafkaProps.put("group.id", "ds");
         KafkaConsumer<String, String> consumer = new KafkaConsumer(kafkaProps);
-        consumer.subscribe(Arrays.asList("test1"), new ConsumerRebalanceAdapter(consumer));
+        consumer.subscribe(Arrays.asList("test"), new ConsumerRebalanceAdapter(consumer));
 
         executor.submit(() -> {
             try {

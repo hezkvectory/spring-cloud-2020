@@ -10,12 +10,12 @@
     <version>${revision}</version>
 
     <modules>
-<!--        <module>base</module>-->
+        <module>base</module>
 <!--        <module>feign</module>-->
-        <module>spring-container</module>
-<!--        <module>standalone</module>-->
-<!--        <module>design-pattern</module>-->
-        <!--        <module>jvm</module>-->
+<!--        <module>spring-container</module>-->
+        <module>standalone</module>
+        <module>design-pattern</module>
+<!--        <module>jvm</module>-->
     <!--    <module>grpc</module>
         <module>gateway</module>
         <module>shiro</module>
