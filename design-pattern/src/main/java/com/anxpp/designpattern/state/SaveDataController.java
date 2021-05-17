@@ -6,12 +6,13 @@ public class SaveDataController {
 
     public void save(String data) {
         //为了演示，此处的大的数据其实也是很小的
-        if (data.length() < 1 << 2)
+        if (data.length() < 1 << 2) {
             saveData = SaveSmallData.instance;
-        else if (data.length() < 1 << 4)
+        } else if (data.length() < 1 << 4) {
             saveData = SaveMiddleData.instance;
-        else
+        } else {
             saveData = SaveBigData.instance;
+        }
         saveData.save(data);
     }
 }

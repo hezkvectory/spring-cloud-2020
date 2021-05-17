@@ -10,6 +10,7 @@
     <version>${revision}</version>
 
     <modules>
+        <module>algorithm</module>
         <module>base</module>
 <!--        <module>feign</module>-->
 <!--        <module>spring-container</module>-->
@@ -22,7 +23,6 @@
         <module>groovy</module>
         <module>redis</module>
         <module>es</module>
-        <module>algorithm</module>
         <module>thrift</module>-->
 <!--        <module>io</module>-->
     </modules>

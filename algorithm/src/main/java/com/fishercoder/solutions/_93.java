@@ -1,6 +1,7 @@
 package com.fishercoder.solutions;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,8 +16,9 @@ import java.util.List;
  */
 public class _93 {
     public static void main(String[] args) {
+//        Solution2 solution = new Solution2();
         Solution1 solution = new Solution1();
-        System.out.println(solution.restoreIpAddresses("25525511135"));
+        System.out.println(solution.restoreIpAddresses("2525511135"));
     }
 
     public static class Solution1 {
@@ -34,13 +36,7 @@ public class _93 {
                 if (pos != s.length()) {
                     return;
                 }
-                StringBuilder stringBuilder = new StringBuilder();
-                for (int i = 0; i < 4; i++) {
-                    stringBuilder.append(bytes.get(i));
-                    stringBuilder.append(".");
-                }
-                stringBuilder.setLength(stringBuilder.length() - 1);
-                result.add(stringBuilder.toString());
+                result.add(String.join(".", bytes));
                 return;
             }
 
@@ -61,6 +57,49 @@ public class _93 {
             }
             int num = Integer.valueOf(oneByte);
             return (num >= 0 && num < 256);
+        }
+    }
+
+
+    public static class Solution2 {
+        public List<String> restoreIpAddresses(String str) {
+            List<String> result = new ArrayList<>();
+            if (str == null || str.length() < 4 || str.length() > 12) {
+                return result;
+            }
+            dfs(str, 0, 0, new LinkedList<>(), result);
+            return result;
+        }
+
+        private void dfs(String str, int nums, int start, LinkedList<String> strings, List<String> result) {
+            if (strings.size() == 4) {
+                if (str.length() == start) {
+                    result.add(String.join(".", strings));
+                }
+                return;
+            }
+            if (str.length() - start < (4 - nums) || str.length() - start > (4 - nums) * 3) {
+                return;
+            }
+            for (int i = 0; i < 3; i++) {
+                if (start + i >= str.length()) {
+                    break;
+                }
+                if (valid(str, start, start + i + 1)) {
+                    strings.addLast(str.substring(start, start + i + 1));
+                    dfs(str, nums + 1, start + i + 1, strings, result);
+                    strings.removeLast();
+                }
+            }
+        }
+
+        private boolean valid(String str, int start, int end) {
+            String tmp = str.substring(start, end);
+            if (tmp.charAt(0) == '0') {
+                return false;
+            }
+            int value = Integer.parseInt(tmp);
+            return value >= 0 && value <= 255;
         }
     }
 }

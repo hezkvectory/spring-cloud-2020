@@ -6,14 +6,19 @@ package com.anxpp.designpattern.singleton;
  * @author Administrator
  */
 public class SimpleSingleton {
-    private static SimpleSingleton instance;
+    private volatile static SimpleSingleton instance;
 
     private SimpleSingleton() {
     }
 
     public static SimpleSingleton getIntance() {
-        if (instance == null)
-            instance = new SimpleSingleton();
+        if (instance == null) {
+            synchronized (SimpleSingleton.class) {
+                if (instance == null) {
+                    instance = new SimpleSingleton();
+                }
+            }
+        }
         return instance;
     }
 }

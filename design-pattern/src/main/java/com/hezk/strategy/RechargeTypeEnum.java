@@ -21,12 +21,4 @@ public enum RechargeTypeEnum {
         }
         return null;
     }
-
-    public int getCode() {
-        return code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }
