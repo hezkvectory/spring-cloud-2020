@@ -39,7 +39,7 @@ public class _30 {
                     String word = s.substring(i, j);
                     if (clone.containsKey(word)) {
                         clone.put(word, clone.get(word) - 1);
-                        i = j;
+//                        i = j;
                         matchedWord++;
                     }
                     if (matchedWord == wordLen) {
@@ -59,6 +59,49 @@ public class _30 {
             }
             return result;
         }
+    }
+
+
+    public static class Solution2 {
+        public List<Integer> findSubstring(String str, String[] arr) {
+            List<Integer> result = new ArrayList<>();
+            if (str == null || str.length() == 0 || arr.length == 0) {
+                return result;
+            }
+            int wordLen = arr[0].length();
+            int arrLen = arr.length;
+            Map<String, Integer> count = new HashMap<>();
+            for (String temp : arr) {
+                count.put(temp, count.getOrDefault(temp, 0) + 1);
+            }
+
+            for (int i = 0; i < str.length() - wordLen * arrLen + 1; i++) {
+                String substr = str.substring(i, i + wordLen * arrLen);
+                Map<String, Integer> clone = new HashMap<>();
+                for (int j = 0; j < arrLen * wordLen; j += wordLen) {
+                    String temp = substr.substring(j, j + wordLen);
+                    if (!count.containsKey(temp)) {
+                        break;
+                    }
+                    clone.put(temp, clone.getOrDefault(temp, 0) + 1);
+                    if (clone.get(temp) > count.get(temp)) {
+                        break;
+                    }
+                }
+                if (clone.equals(count)) {
+                    result.add(i);
+                }
+            }
+            return result;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String str = "barfoothefoobarman";
+        String[] arr = {"foo", "bar"};
+        Solution2 solution = new Solution2();
+        System.out.println(solution.findSubstring(str, arr));
     }
 
 }

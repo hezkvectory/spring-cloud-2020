@@ -63,11 +63,6 @@ public class _3 {
     }
 
     public static class Solution2 {
-        /**
-         * Sliding Window
-         * O(n) time
-         * O(min(m,n)) or O(k) space
-         */
         public int lengthOfLongestSubstring(String s) {
             int n = s.length();
             Set<Character> set = new HashSet<>();
@@ -88,18 +83,12 @@ public class _3 {
     }
 
     public static class Solution3 {
-        /**
-         * Sliding Window
-         * O(n) time
-         * O(n) space
-         */
         public int lengthOfLongestSubstring(String s) {
             if (s.length() == 0) {
                 return 0;
             }
             int max = 0;
             Map<Character, Integer> map = new HashMap<>();
-            /**Try to extend the range (i, j)*/
             for (int i = 0, j = 0; i < s.length(); i++) {
                 if (map.containsKey(s.charAt(i))) {
                     j = Math.max(j, map.get(s.charAt(i)) + 1);
@@ -112,18 +101,12 @@ public class _3 {
     }
 
     public static class Solution4 {
-        /**
-         * Sliding Window Optimized
-         * O(n) time
-         * O(n) space
-         */
         public int lengthOfLongestSubstring(String s) {
             if (s.length() == 0) {
                 return 0;
             }
             int max = 0;
             int[] index = new int[128];
-            /**Try to extend the range (i, j)*/
             for (int i = 0, j = 0; j < s.length(); j++) {
                 i = Math.max(index[s.charAt(j)], i);
                 max = Math.max(max, j - i + 1);
@@ -138,12 +121,12 @@ public class _3 {
             if (s.length() == 0) {
                 return 0;
             }
-            boolean[] used = new boolean[128];
+            boolean[] used = new boolean[256];
             int max = 0;
             int left = 0, right = 0;
             int len = s.length();
             while (right < len) {
-                if (used[right]) {
+                if (used[s.charAt(right)]) {
                     max = Math.max(max, right - left);
                     while (left < right && s.charAt(left) != s.charAt(right)) {
                         used[s.charAt(left)] = false;
@@ -152,11 +135,16 @@ public class _3 {
                     left++;
                     right++;
                 } else {
-                    used[s.charAt(left++)] = false;
+                    used[s.charAt(right++)] = true;
                 }
             }
             max = Math.max(max, right - left);
             return max;
         }
+    }
+
+    public static void main(String[] args) {
+        Solution5 solution5 = new Solution5();
+        System.out.println(solution5.lengthOfLongestSubstring("abcabcbb"));
     }
 }

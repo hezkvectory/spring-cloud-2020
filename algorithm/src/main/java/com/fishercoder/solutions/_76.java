@@ -19,6 +19,11 @@ package com.fishercoder.solutions;
 
 public class _76 {
 
+    public static void main(String[] args) {
+        Solution1 solution = new Solution1();
+        System.out.println(solution.minWindow("ADOBECODEBANC", "ABC"));
+    }
+
     public static class Solution1 {
         public String minWindow(String s, String t) {
             int[] counts = new int[256];
