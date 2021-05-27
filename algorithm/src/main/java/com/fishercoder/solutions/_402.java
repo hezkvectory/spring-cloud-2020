@@ -1,5 +1,8 @@
 package com.fishercoder.solutions;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 402. Remove K Digits
  *
@@ -24,7 +27,9 @@ package com.fishercoder.solutions;
  Output: "0"
  Explanation: Remove all the digits from the number and it is left with nothing which is 0.
  */
+
 public class _402 {
+
     public static class Solution1 {
 
         /** credit: https://discuss.leetcode.com/topic/59412/a-greedy-method-using-stack-o-n-time-and-o-n-space */
@@ -48,5 +53,36 @@ public class _402 {
             }
             return index == digits ? "0" : new String(stack, index, digits - index);
         }
+    }
+
+    public static class Solution2 {
+        public String removeKdigits(String str, int k) {
+            int tmp = k;
+            Deque<Character> deque = new ArrayDeque<>();
+            for(char c : str.toCharArray()) {
+                while(!deque.isEmpty() && deque.peekLast() > c && tmp > 0) {
+                    deque.pollLast();
+                    tmp--;
+                }
+                deque.addLast(c);
+            }
+            StringBuffer buffer = new StringBuffer();
+            int n = str.length() - k;
+            while(!deque.isEmpty() && n > 0) {
+                buffer.append(deque.pollFirst());
+                n--;
+            }
+            return buffer.toString();
+        }
+    }
+
+    /**
+     *  12345621
+     *  432123
+     *  1234211
+     */
+    public static void main(String[] args) {
+        String str = "122223456789";
+        System.out.println(new Solution2().removeKdigits(str, 3));
     }
 }
