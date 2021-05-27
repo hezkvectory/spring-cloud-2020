@@ -107,4 +107,17 @@ public class HashMapTest {
         System.out.println("capacity3 : " + capacity3.invoke(map));
     }
 
+    @Test
+    public void testHashEquals() {
+        Map<String, String> m1 = new HashMap<>();
+        m1.put("222", "222");
+        m1.put("223", "222");
+
+        Map<String, String> m2 = new HashMap<>();
+        m2.put("222", "222");
+        m2.put("223", "222");
+        m2.put("2235", "222");
+
+        System.out.println(m1.equals(m2));
+    }
 }

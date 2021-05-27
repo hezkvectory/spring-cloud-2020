@@ -11,6 +11,7 @@ public class PriorityQueueTest {
     public void test1() {
 //        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
+//        PriorityQueue<Integer> queue = new PriorityQueue<>();
         queue.add(3);
         queue.add(2);
         queue.add(4);

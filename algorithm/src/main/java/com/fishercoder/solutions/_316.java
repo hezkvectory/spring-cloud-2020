@@ -2,28 +2,31 @@ package com.fishercoder.solutions;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 /**
  * 316. Remove Duplicate Letters
- *
+ * <p>
  * Given a string which contains only lowercase letters,
  * remove duplicate letters so that every letter appear once and only once.
  * You must make sure your result is the smallest in lexicographical order among all possible results.
-
- Example:
- Given "bcabc"
- Return "abc"
-
- Given "cbacdcbc"
- Return "acdb"
+ * <p>
+ * Example:
+ * Given "bcabc"
+ * Return "abc"
+ * <p>
+ * Given "cbacdcbc"
+ * Return "acdb"
  */
 public class _316 {
     public static class Solution1 {
-        /** credit: https://discuss.leetcode.com/topic/32259/java-solution-using-stack-with-comments/2 */
+        /**
+         * credit: https://discuss.leetcode.com/topic/32259/java-solution-using-stack-with-comments/2
+         */
         public String removeDuplicateLetters(String s) {
             int[] res = new int[26]; //will contain number of occurences of character (i+'a')
             boolean[] visited =
-                new boolean[26]; //will contain if character (i+'a') is present in current result Stack
+                    new boolean[26]; //will contain if character (i+'a') is present in current result Stack
             char[] ch = s.toCharArray();
             for (char c : ch) {  //count number of occurences of character
                 res[c - 'a']++;
@@ -75,7 +78,53 @@ public class _316 {
                 }
             }
             return s.length() == 0 ? "" : s.charAt(pos) + removeDuplicateLetters(
-                s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
+                    s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
         }
     }
+
+
+    public static class Solution {
+        //1、去除重复字母
+        //2、保持原有字符顺序
+        //3、保证字典顺序最小
+        public String removeDuplicateLetters(String str) {
+            if (str == null || str.length() <= 1) {
+                return str;
+            }
+            int len = str.length();
+            Stack<Character> stack = new Stack<>();
+            int[] count = new int[256];
+            for (int i = 0; i < len; i++) {
+                count[str.charAt(i)]++;
+            }
+            boolean[] inStack = new boolean[256];
+
+            for (int i = 0; i < len; i++) {
+                char c = str.charAt(i);
+                count[c]--;
+                if (inStack[c]) {
+                    continue;
+                }
+                while (!stack.isEmpty() && stack.peek() > c) {
+                    if (count[stack.peek()] == 0) {
+                        break;
+                    }
+                    inStack[stack.pop()] = false;
+                }
+                stack.push(c);
+                inStack[c] = true;
+            }
+            StringBuffer buffer = new StringBuffer();
+            while (!stack.isEmpty()) {
+                buffer.append(stack.pop());
+            }
+            return buffer.reverse().toString();
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "cbacdcbc";
+        System.out.println(new Solution().removeDuplicateLetters(str));
+    }
+
 }

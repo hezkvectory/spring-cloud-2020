@@ -16,11 +16,6 @@ import com.fishercoder.common.classes.ListNode;
 
 public class _21 {
     public static class Solution1 {
-        /**
-         * recursive solution
-         * Time: O(m+n)
-         * Space: O(m+n)
-         * */
         public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             if (l1 == null) {
                 return l2;
@@ -39,11 +34,6 @@ public class _21 {
     }
 
     public static class Solution2 {
-        /**
-         * iterative solution
-         * Time: O(m+n)
-         * Space: O(1)
-         */
         public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             ListNode dummy = new ListNode(-1);
             ListNode curr = dummy;
