@@ -17,12 +17,12 @@
         <module>standalone</module>
         <module>design-pattern</module>
         <module>gateway</module>
+        <module>es</module>
 <!--        <module>jvm</module>-->
     <!--    <module>grpc</module>
         <module>shiro</module>
         <module>groovy</module>
         <module>redis</module>
-        <module>es</module>
         <module>thrift</module>-->
 <!--        <module>io</module>-->
     </modules>
