@@ -1,56 +1,43 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
+import com.fishercoder.common.utils.TreeUtils;
+
+import java.util.Arrays;
 
 /**
  * 110. Balanced Binary Tree
- *
+ * <p>
  * Given a binary tree, determine if it is height-balanced.
  * For this problem, a height-balanced binary tree is defined as a binary tree in which
  * the depth of the two subtrees of every node never differ by more than 1.
-
- Example 1:
- Given the following tree [3,9,20,null,null,15,7]:
-
-    3
-   / \
-  9  20
-  /  \
- 15  7
-
- Return true.
-
- Example 2:
- Given the following tree [1,2,2,3,3,null,null,4,4]:
-
-     1
-    / \
-   2   2
-  / \
- 3   3
-/ \
-4 4
-
- Return false.
+ * <p>
+ * Example 1:
+ * Given the following tree [3,9,20,null,null,15,7]:
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15  7
+ * <p>
+ * Return true.
+ * <p>
+ * Example 2:
+ * Given the following tree [1,2,2,3,3,null,null,4,4]:
+ * <p>
+ * 1
+ * / \
+ * 2   2
+ * / \
+ * 3   3
+ * / \
+ * 4 4
+ * <p>
+ * Return false.
  */
 
 public class _110 {
-
-    public static class Solution{
-        public boolean isBalance(TreeNode root){
-            if (root == null) {
-                return true;
-            }
-            return Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalance(root.left) && isBalance(root.right);
-        }
-
-        private int helper(TreeNode root) {
-            if (root == null) {
-                return 0;
-            }
-            return Math.max(helper(root.left), helper(root.right)) + 1;
-        }
-    }
 
     public static class Solution1 {
         //recursively get the height of each subtree of each node, compare their difference, if greater than 1, then return false
@@ -101,5 +88,48 @@ public class _110 {
             return Math.max(leftH, rightH) + 1;
         }
     }
+
+    public static class Solution {
+        public boolean isBalance(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            return Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalance(root.left) && isBalance(root.right);
+        }
+
+        private int helper(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            return Math.max(helper(root.left), helper(root.right)) + 1;
+        }
+    }
+
+
+    public static class Solution3 {
+        public boolean isBalance(TreeNode root) {
+            return height(root) >= 0;
+        }
+
+        private int height(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int leftH = height(root.left);
+            int rightH = height(root.right);
+            if (leftH == -1 || rightH == -1 || Math.abs(leftH - rightH) > 1) {
+                return -1;
+            }
+            return Math.max(height(root.left), height(root.right)) + 1;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        TreeNode root = TreeUtils.constructBinaryTree(Arrays.asList(3, 9, 20, null, null, 15, 7));
+        System.out.println(new Solution3().isBalance(root));
+        System.out.println(new Solution().isBalance(root));
+    }
+
 
 }

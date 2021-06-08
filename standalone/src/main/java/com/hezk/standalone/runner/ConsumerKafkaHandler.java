@@ -6,8 +6,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.listener.GenericMessageListener;
 import org.springframework.stereotype.Component;
 
-@Component
-@KafkaListener(id = "group-0", topics = {"test"})
+//@Component
+//@KafkaListener(id = "group-0", topics = {"test"})
 public class ConsumerKafkaHandler implements GenericMessageListener {
 
     @KafkaListener(id = "teste", topics = "test")

@@ -1,6 +1,9 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
+import com.fishercoder.common.utils.TreeUtils;
+
+import java.util.Arrays;
 
 /**
  * 98. Validate Binary Search Tree
@@ -26,6 +29,11 @@ import com.fishercoder.common.classes.TreeNode;
  Binary tree [1,2,3], return false.
  */
 public class _98 {
+
+    public static void main(String[] args) {
+        TreeNode root = TreeUtils.constructBinaryTree(Arrays.asList(2,1,3));
+        System.out.println(new Solution1().isValidBST(root));
+    }
 
     public static class Solution1 {
 

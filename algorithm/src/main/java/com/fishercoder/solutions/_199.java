@@ -29,7 +29,6 @@ public class _199 {
 	}
 
 	public static class Solution1 {
-		/**credit: https://leetcode.com/problems/binary-tree-right-side-view/discuss/56012/My-simple-accepted-solution(JAVA)*/
 		public List<Integer> rightSideView(TreeNode root) {
 			List<Integer> result = new ArrayList<>();
 			rightView(root, result, 0);
@@ -40,7 +39,6 @@ public class _199 {
 			if (curr == null) {
 				return;
 			}
-//			System.out.print(curr.val + "\t");
 			if (currDepth == result.size()) {
 				result.add(curr.val);
 			}

@@ -25,13 +25,18 @@ public class H2EnvironmentPostProcessor implements EnvironmentPostProcessor {
         MapPropertySource firstPropertySource = new MapPropertySource(SOURCE_NAME_FIRST, firstSource);
         propertySources.addFirst(firstPropertySource);
 
-        firstSource.put("spring.datasource.driver-class-name", "org.h2.Driver");
-        firstSource.put("spring.datasource.schema", "classpath:db/schema.sql");
-        firstSource.put("spring.datasource.data", "classpath:db/data.sql");
-        firstSource.put("spring.datasource.url", "jdbc:h2:mem:test");
-        firstSource.put("spring.datasource.username", "sa");
-        firstSource.put("spring.datasource.password", "sa");
-        firstSource.put("spring.h2.console.enabled", "true");
+//        firstSource.put("spring.datasource.driver-class-name", "org.h2.Driver");
+//        firstSource.put("spring.datasource.schema", "classpath:db/schema.sql");
+//        firstSource.put("spring.datasource.data", "classpath:db/data.sql");
+//        firstSource.put("spring.datasource.url", "jdbc:h2:mem:test");
+//        firstSource.put("spring.datasource.username", "sa");
+//        firstSource.put("spring.datasource.password", "sa");
+//        firstSource.put("spring.h2.console.enabled", "true");
+
+        firstSource.put("spring.datasource.driver-class-name", "com.mysql.cj.jdbc.Driver");
+        firstSource.put("spring.datasource.url", "jdbc:mysql://kafka:3306/test");
+        firstSource.put("spring.datasource.username", "root");
+        firstSource.put("spring.datasource.password", "root@123");
     }
 
 }
