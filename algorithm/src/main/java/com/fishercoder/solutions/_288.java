@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:
 

@@ -4,13 +4,7 @@ import com.fishercoder.common.classes.TreeNode;
 import com.fishercoder.common.utils.CommonUtils;
 import com.fishercoder.common.utils.TreeUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 1104. Path In Zigzag Labelled Binary Tree

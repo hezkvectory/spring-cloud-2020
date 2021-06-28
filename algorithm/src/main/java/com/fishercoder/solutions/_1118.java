@@ -1,8 +1,5 @@
 package com.fishercoder.solutions;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 1118. Number of Days in a Month
  *

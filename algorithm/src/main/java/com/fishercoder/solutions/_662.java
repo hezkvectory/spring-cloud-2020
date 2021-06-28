@@ -2,12 +2,7 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 662. Maximum Width of Binary Tree

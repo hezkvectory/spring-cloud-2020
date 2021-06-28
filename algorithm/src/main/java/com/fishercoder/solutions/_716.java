@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 716. Max Stack

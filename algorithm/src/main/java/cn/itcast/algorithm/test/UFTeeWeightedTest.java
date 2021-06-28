@@ -1,6 +1,5 @@
 package cn.itcast.algorithm.test;
 
-import cn.itcast.algorithm.uf.UF_Tree;
 import cn.itcast.algorithm.uf.UF_Tree_Weighted;
 
 import java.util.Scanner;

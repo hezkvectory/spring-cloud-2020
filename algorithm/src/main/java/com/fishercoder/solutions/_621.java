@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 621. Task Scheduler

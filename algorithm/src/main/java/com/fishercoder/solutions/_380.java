@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 380. Insert Delete GetRandom O(1)

@@ -1,7 +1,5 @@
 package com.fishercoder.solutions;
 
-import java.util.Stack;
-
 /**
  * 1249. Minimum Remove to Make Valid Parentheses
  *

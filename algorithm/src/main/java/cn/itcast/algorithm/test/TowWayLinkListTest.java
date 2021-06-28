@@ -1,6 +1,5 @@
 package cn.itcast.algorithm.test;
 
-import cn.itcast.algorithm.linear.LinkList;
 import cn.itcast.algorithm.linear.TowWayLinkList;
 
 

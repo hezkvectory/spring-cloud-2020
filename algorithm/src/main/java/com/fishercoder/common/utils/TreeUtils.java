@@ -2,12 +2,7 @@ package com.fishercoder.common.utils;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * This is a util class to contain all tree related methods.

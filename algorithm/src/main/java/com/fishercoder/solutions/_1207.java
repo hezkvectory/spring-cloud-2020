@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 1207. Unique Number of Occurrences

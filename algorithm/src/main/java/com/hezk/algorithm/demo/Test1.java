@@ -1,7 +1,7 @@
 package com.hezk.algorithm.demo;
 
-import java.util.Stack;
 import java.io.IOException;
+import java.util.Stack;
 
 public class Test1 {
     public static int[] findMax(int[] arry) {

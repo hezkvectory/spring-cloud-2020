@@ -2,12 +2,7 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 314. Binary Tree Vertical Order Traversal

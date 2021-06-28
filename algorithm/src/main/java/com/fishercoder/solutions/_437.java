@@ -1,6 +1,9 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
+import com.fishercoder.common.utils.TreeUtils;
+
+import java.util.Arrays;
 
 /**
  * 437. Path Sum III
@@ -50,4 +53,8 @@ public class _437 {
         }
     }
 
+    public static void main(String[] args) {
+        TreeNode node = TreeUtils.constructBinaryTree(Arrays.asList(10,5,-3,3,2,null,11,3,-2,null,1));
+        System.out.println(new Solution1().pathSum(node, 8));
+    }
 }

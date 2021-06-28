@@ -2,8 +2,6 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.sql.Struct;
-
 /**
  * 1372. Longest ZigZag Path in a Binary Tree
  *

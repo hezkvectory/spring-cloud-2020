@@ -1,6 +1,9 @@
 package com.hezk.algorithm;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class SlideWindowMaxData {
 

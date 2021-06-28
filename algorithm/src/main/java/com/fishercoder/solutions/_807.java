@@ -1,7 +1,5 @@
 package com.fishercoder.solutions;
 
-import com.fishercoder.common.utils.CommonUtils;
-
 /**
  * 807. Max Increase to Keep City Skyline
  *

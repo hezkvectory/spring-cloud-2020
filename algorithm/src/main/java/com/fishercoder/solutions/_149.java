@@ -1,6 +1,7 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.Point;
+
 import java.util.HashMap;
 import java.util.Map;
 

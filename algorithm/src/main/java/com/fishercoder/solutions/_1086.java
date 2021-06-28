@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 1086. High Five

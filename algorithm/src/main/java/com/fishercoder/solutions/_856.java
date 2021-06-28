@@ -1,7 +1,5 @@
 package com.fishercoder.solutions;
 
-import java.util.Stack;
-
 /**
  * 856. Score of Parentheses
  *

@@ -1,7 +1,6 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.ListNode;
-import com.fishercoder.common.utils.CommonUtils;
 
 /**19. Remove Nth Node From End of List
  *

@@ -1,6 +1,7 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.Node;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

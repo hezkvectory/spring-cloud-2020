@@ -224,7 +224,7 @@ public class _4 {
                     return nums2[k + index2 - 1];
                 }
                 if (index2 == len2) {
-                    return nums1[k + index1 - 1];
+                    return nums1[k + index1 - 1 ];
                 }
                 if (1 == k) {
                     return Math.min(nums1[index1], nums2[index2]);

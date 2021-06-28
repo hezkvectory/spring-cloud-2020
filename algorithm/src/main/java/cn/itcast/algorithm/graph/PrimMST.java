@@ -3,9 +3,6 @@ package cn.itcast.algorithm.graph;
 import cn.itcast.algorithm.linear.Queue;
 import cn.itcast.algorithm.priority.IndexMinPriorityQueue;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class PrimMST {
     //索引代表顶点，值表示当前顶点和最小生成树之间的最短边
     private Edge[] edgeTo;

@@ -2,8 +2,8 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 

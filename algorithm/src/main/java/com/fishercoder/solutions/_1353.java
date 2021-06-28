@@ -1,9 +1,6 @@
 package com.fishercoder.solutions;
 
-import com.fishercoder.common.utils.CommonUtils;
-
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.PriorityQueue;
 
 /**

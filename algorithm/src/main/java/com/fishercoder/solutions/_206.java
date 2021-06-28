@@ -2,8 +2,6 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.ListNode;
 
-import java.util.List;
-
 /**
  * 206. Reverse Linked List
  * <p>

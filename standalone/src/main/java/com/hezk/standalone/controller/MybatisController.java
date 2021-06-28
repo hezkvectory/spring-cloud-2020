@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * mysql 压测，参考kafka-tool:2.6.0版本producer压测
+ * 参考rocketmsq Producer压测
  */
 @RequestMapping("/mybatis")
 @RestController

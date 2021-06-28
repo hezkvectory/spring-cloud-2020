@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 1338. Reduce Array Size to The Half

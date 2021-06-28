@@ -3,7 +3,6 @@ package cn.itcast.algorithm.test;
 import cn.itcast.algorithm.graph.Edge;
 import cn.itcast.algorithm.graph.EdgeWeightedGraph;
 import cn.itcast.algorithm.graph.KruskalMST;
-import cn.itcast.algorithm.graph.PrimMST;
 import cn.itcast.algorithm.linear.Queue;
 
 import java.io.BufferedReader;

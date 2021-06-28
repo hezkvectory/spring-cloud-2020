@@ -1,9 +1,7 @@
 package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeLinkNode;
-import com.fishercoder.common.utils.TreeUtils;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 

@@ -2,11 +2,7 @@ package com.fishercoder.solutions;
 
 import com.fishercoder.common.classes.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 988. Smallest String Starting From Leaf
@@ -90,6 +86,40 @@ public class _988 {
             dfs(root.left, path, paths, map);
             dfs(root.right, path, paths, map);
             path = path.substring(0, path.length() - 1);
+        }
+    }
+
+    static class Solution {
+        //选择一个大于'z'的字符作为初始值
+        String ans = "~";
+        public String smallestFromLeaf(TreeNode root) {
+            dfs(root, new StringBuffer());
+            return ans;
+        }
+
+        //深度优先搜索每一条根到叶的路径
+        public void dfs(TreeNode root, StringBuffer sb){
+            //遍历到树的末端，返回
+            if(root == null) {
+                return;
+            }
+            //将当前节点的字符拼接到路径字符串中
+            sb.append((char)('a' + root.val));
+            //叶子节点：当前路径字符串s的字典序若小于ans，则更新到ans中
+            if(root.left == null && root.right == null){
+                sb.reverse();
+                String s = sb.toString();
+                sb.reverse(); // sb进行状态重置
+
+                if(s.compareTo(ans) < 0){
+                    ans = s;
+                }
+            }
+            //深度优先遍历
+            dfs(root.left, sb);
+            dfs(root.right, sb);
+            //状态重置到上一次
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }

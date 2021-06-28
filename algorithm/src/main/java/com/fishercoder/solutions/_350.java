@@ -1,10 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * 350. Intersection of Two Arrays II
