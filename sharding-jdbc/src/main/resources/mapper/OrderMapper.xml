@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sharding.demo.mapper.OrderMapper">
+    <select id="selectAllOrder" resultType="com.sharding.demo.pojo.Order">
+        select *
+        from t_order
+        order by orderId desc
+    </select>
+    <insert id="insertOneOrder" parameterType="com.sharding.demo.pojo.Order" useGeneratedKeys="true"
+            keyProperty="orderId">
+        insert into t_order(orderId, goodsName)
+        values (#{orderId}, #{goodsName})
+    </insert>
+</mapper>

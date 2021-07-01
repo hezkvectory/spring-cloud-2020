@@ -1,9 +1,6 @@
 package com.fishercoder.solutions;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 3. Longest Substring Without Repeating Characters
@@ -143,8 +140,37 @@ public class _3 {
         }
     }
 
+    public static class Solution6 {
+
+        public int lengthOfLongestSubstring(String str) {
+            int len = str.length();
+
+            int left = 0, right = 0;
+            Map<Character, Integer> map = new HashMap();
+            int maxLen = Integer.MIN_VALUE;
+
+            while (right < len) {
+                if (map.containsKey(str.charAt(right))) {
+                    int pos = map.get(str.charAt(right));
+                    Iterator<Map.Entry<Character, Integer>> iterator = map.entrySet().iterator();
+                    while (iterator.hasNext()) {
+                        if (pos > iterator.next().getValue()) {
+                            iterator.remove();
+                        }
+                    }
+                    maxLen = Math.max(maxLen, right - pos);
+                }
+                map.put(str.charAt(right), right);
+                right++;
+            }
+            return maxLen;
+        }
+
+    }
+
     public static void main(String[] args) {
-        Solution5 solution5 = new Solution5();
+        Solution6 solution5 = new Solution6();
         System.out.println(solution5.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(solution5.lengthOfLongestSubstring("bbbb"));
     }
 }

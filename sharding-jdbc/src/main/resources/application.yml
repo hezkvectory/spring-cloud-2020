@@ -1,0 +1,100 @@
+logging:
+  level:
+    org.springframework.web: trace
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+server:
+  error:
+    include-stacktrace: always
+
+spring:
+  shardingsphere:
+    datasource:
+      names: ebusinessmaster,ebusinessslave01,saleorder01,saleorder02,saleorder01slave01,saleorder02slave01
+      ebusinessmaster:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:4406/ebusiness?characterEncoding=utf-8
+        username: root
+      ebusinessslave01:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:5506/ebusiness?characterEncoding=utf-8
+        username: root
+      saleorder01:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:4406/saleorder01?characterEncoding=utf-8
+        username: root
+      saleorder01slave01:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:5506/saleorder01?characterEncoding=utf-8
+        username: root
+      saleorder02:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:4406/saleorder02?characterEncoding=utf-8
+        username: root
+      saleorder02slave01:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        filters: stat,wall,log4j2
+        password: root@123
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.33.0.11:5506/saleorder02?characterEncoding=utf-8
+        username: root
+    masterslave:
+      load-balance-algorithm-type: round_robin
+    props:
+      sql:
+        show: true
+    sharding:
+      binding-tables: t_order
+      default-data-source-name: ebusinessmaster
+      default-database-strategy:
+        standard:
+          precise-algorithm-class-name: com.sharding.demo.algorithm.DatabasePreciseShardingAlgorithm
+          sharding-column: orderId
+      master-slave-rules:
+        ebusinessmaster:
+          master-data-source-name: ebusinessmaster
+          slave-data-source-names: ebusinessslave01
+        saleorder01:
+          master-data-source-name: saleorder01
+          slave-data-source-names: saleorder01slave01
+        saleorder02:
+          master-data-source-name: saleorder02
+          slave-data-source-names: saleorder02slave01
+      tables:
+        t_order:
+          actual-data-nodes: saleorder0$->{1..1}.t_order_$->{1..2},saleorder0$->{2..2}.t_order_$->{3..4}
+          table-strategy:
+            standard:
+              precise-algorithm-class-name: com.sharding.demo.algorithm.OrderTablePreciseShardingAlgorithm
+              sharding-column: orderId
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
