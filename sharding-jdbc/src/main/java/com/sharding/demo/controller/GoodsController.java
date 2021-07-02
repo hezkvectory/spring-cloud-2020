@@ -2,6 +2,8 @@ package com.sharding.demo.controller;
 
 import com.sharding.demo.mapper.GoodsMapper;
 import com.sharding.demo.pojo.Goods;
+import com.sharding.demo.service.GoodService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +17,9 @@ public class GoodsController {
 
     @Resource
     private GoodsMapper goodsMapper;
+
+    @Autowired
+    private GoodService goodService;
 
     //更新商品库存 参数:商品id,增加的库存数量
     @RequestMapping("/goodsstock/{goodsId}/{count}")
@@ -33,8 +38,13 @@ public class GoodsController {
     //商品详情 参数:商品id
     @GetMapping("/goodsinfo")
     @ResponseBody
-    public Goods goodsInfo(@RequestParam(value = "goodsid", defaultValue = "0") Long goodsId) {
-        Goods goods = goodsMapper.selectOneGoods(goodsId);
-        return goods;
+    public Goods goodsInfo(@RequestParam(value = "goodsid", defaultValue = "3") Long goodsId) {
+        return goodService.selectOneGoods(goodsId);
+    }
+
+    @GetMapping("/add")
+    @ResponseBody
+    public String add() {
+        return goodService.addGoods();
     }
 }

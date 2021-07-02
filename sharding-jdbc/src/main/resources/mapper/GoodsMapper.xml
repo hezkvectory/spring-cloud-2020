@@ -13,4 +13,10 @@
         SET stock = stock + #{changeAmount,jdbcType=INTEGER}
         WHERE goodsId = #{goodsId,jdbcType=BIGINT}
     </update>
+
+    <insert id="save" parameterType="com.sharding.demo.pojo.Goods" useGeneratedKeys="true" keyProperty="goodsId">
+        INSERT goods(goodsName,stock)
+        VALUES
+        (#{goodsName},#{stock})
+    </insert>
 </mapper>

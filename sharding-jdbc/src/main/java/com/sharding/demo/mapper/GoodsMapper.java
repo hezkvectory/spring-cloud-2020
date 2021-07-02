@@ -11,4 +11,6 @@ public interface GoodsMapper {
     Goods selectOneGoods(Long goodsId);
 
     int updateGoodsStock(@Param("goodsId") Long goodsId, @Param("changeAmount") int changeAmount);
+
+    void save(Goods goods);
 }

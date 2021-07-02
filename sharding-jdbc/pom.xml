@@ -61,6 +61,11 @@
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-transaction-xa-core</artifactId>
+            <version>4.1.1</version>
+        </dependency>
 
         <!--thymeleaf begin-->
         <dependency>
