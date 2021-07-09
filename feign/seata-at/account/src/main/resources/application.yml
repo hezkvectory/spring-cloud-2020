@@ -1,0 +1,40 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: account-service
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: account-service
+  datasource:
+    url: jdbc:mysql://kafka:3306/fescar?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root@123
+  main:
+    allow-bean-definition-overriding: true
+
+seata:
+  enabled: true
+  service:
+    grouplist:
+      default: ubuntu:8091
+    disable-global-transaction: false
+    vgroup-mapping:
+      account-service: default
+
+logging:
+  level:
+    com.test: debug
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:8761/eureka/
+  instance:
+    hostname:  127.0.0.1
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: false

@@ -2,6 +2,8 @@ package com.hezk.equal;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 public class EqualsTest {
 
     @Test
@@ -25,5 +27,12 @@ public class EqualsTest {
     @Test
     public void test2(){
         System.out.println(1<<20);
+    }
+
+
+    @Test
+    public void test3(){
+        Date date = new Date();
+        System.out.println(date.getTime());
     }
 }

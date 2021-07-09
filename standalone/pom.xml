@@ -159,12 +159,17 @@
             <version>5.0.3</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.vipkid.vkafka</groupId>
-            <artifactId>kafka_2.11</artifactId>
-            <version>0.10.1.1</version>
-            <scope>compile</scope>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

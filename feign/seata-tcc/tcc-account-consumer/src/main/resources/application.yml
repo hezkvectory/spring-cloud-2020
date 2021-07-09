@@ -1,0 +1,51 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: account-service
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: account-service
+  datasource:
+    url: jdbc:mysql://kafka:3306/consumer?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root@123
+  main:
+    allow-bean-definition-overriding: true
+
+seata:
+  enabled: true
+  service:
+    grouplist:
+      default: ubuntu:8091
+    disable-global-transaction: false
+    vgroup-mapping:
+      account-service: default
+
+logging:
+  level:
+    com.test: debug
+
+dubbo:
+  scan:
+    base-packages: com.test.account
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+  cloud:
+    registry-type: zookeeper
+  application:
+    name: tcc-account-consumer
+    id: tcc-account-consumer
+    qosEnable: false
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://kafka:2181
+
+mybatis:
+  config-location: classpath:sqlmap-config.xml

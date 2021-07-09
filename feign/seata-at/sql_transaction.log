@@ -1,0 +1,121 @@
+
+
+
+
+
+
+2021-07-08T07:45:52.993473Z	   42 Query	SET autocommit=0
+2021-07-08T07:45:52.996016Z	   42 Query	SELECT id, count FROM storage_tbl WHERE commodity_code = 'C100000' FOR UPDATE
+2021-07-08T07:45:52.998324Z	   42 Query	update storage_tbl set count = count - 30 where commodity_code = 'C100000'
+2021-07-08T07:45:53.001904Z	   42 Query	SELECT id, count FROM storage_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:45:53.013129Z	   42 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739651, '172.18.0.5:8091:45188736380739650', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739650","branchId":45188736380739651,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"UPDATE","tableName":"storage_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"storage_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":140}]]}]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"storage_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":110}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:45:53.014843Z	   42 Query	commit
+2021-07-08T07:45:53.018386Z	   42 Query	commit
+2021-07-08T07:45:53.019595Z	   42 Query	SET autocommit=1
+2021-07-08T07:45:53.024653Z	   43 Query	SET autocommit=0
+2021-07-08T07:45:53.026058Z	   43 Query	insert order_tbl(user_id,commodity_code,count,money) values('U100000','C100000',30,3000)
+2021-07-08T07:45:53.028386Z	   43 Query	SELECT * FROM order_tbl WHERE  (id ) in (  (20)  )
+2021-07-08T07:45:53.038873Z	   43 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739652, '172.18.0.5:8091:45188736380739650', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739650","branchId":45188736380739652,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"INSERT","tableName":"order_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords$EmptyTableRecords","tableName":"order_tbl","rows":["java.util.ArrayList",[]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"order_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":20},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"user_id","keyType":"NULL","type":12,"value":"U100000"},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"commodity_code","keyType":"NULL","type":12,"value":"C100000"},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":30},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":3000}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:45:53.041009Z	   43 Query	commit
+2021-07-08T07:45:53.043702Z	   43 Query	commit
+2021-07-08T07:45:53.044926Z	   43 Query	SET autocommit=1
+2021-07-08T07:45:53.051940Z	   40 Query	SET autocommit=0
+2021-07-08T07:45:53.053720Z	   40 Query	SELECT id, money FROM account_tbl WHERE user_id = 'U100000' FOR UPDATE
+2021-07-08T07:45:53.055473Z	   40 Query	update account_tbl set money = money - 3000 where user_id = 'U100000'
+2021-07-08T07:45:53.057799Z	   40 Query	SELECT id, money FROM account_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:45:53.067503Z	   40 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739653, '172.18.0.5:8091:45188736380739650', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739650","branchId":45188736380739653,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"UPDATE","tableName":"account_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"account_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":4000}]]}]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"account_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":1000}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:45:53.069626Z	   40 Query	commit
+2021-07-08T07:45:53.072022Z	   40 Query	commit
+2021-07-08T07:45:53.073369Z	   40 Query	SET autocommit=1
+2021-07-08T07:45:53.077685Z	   46 Query	select * from account_tbl where user_id='U100000'
+2021-07-08T07:45:53.079857Z	   46 Query	select * from storage_tbl where commodity_code='C100000'
+2021-07-08T07:45:53.389007Z	   40 Query	DELETE FROM undo_log WHERE  branch_id IN  (45188736380739653)  AND xid IN  ('172.18.0.5:8091:45188736380739650')
+2021-07-08T07:45:53.403725Z	   42 Query	DELETE FROM undo_log WHERE  branch_id IN  (45188736380739651)  AND xid IN  ('172.18.0.5:8091:45188736380739650')
+2021-07-08T07:45:53.516747Z	   43 Query	DELETE FROM undo_log WHERE  branch_id IN  (45188736380739652)  AND xid IN  ('172.18.0.5:8091:45188736380739650')
+2021-07-08T07:47:51.229723Z	    4 Init DB	fescar
+2021-07-08T07:47:51.232052Z	    4 Query	SELECT * FROM `fescar`.`storage_tbl` LIMIT 0, 1000
+2021-07-08T07:47:51.239265Z	   47 Connect	root@172.18.0.1 on  using TCP/IP
+2021-07-08T07:47:51.241321Z	   47 Query	SET NAMES utf8mb4
+2021-07-08T07:47:51.243700Z	   47 Init DB	fescar
+2021-07-08T07:47:51.245613Z	   47 Query	SHOW COLUMNS FROM `fescar`.`storage_tbl`
+2021-07-08T07:47:51.251726Z	    4 Query	SHOW TABLE STATUS LIKE 'storage_tbl'
+2021-07-08T07:47:51.255278Z	    4 Query	SHOW CREATE TABLE `fescar`.`storage_tbl`
+2021-07-08T07:47:52.612297Z	    4 Init DB	fescar
+2021-07-08T07:47:52.621297Z	    4 Query	SHOW CREATE TABLE `order_tbl`
+2021-07-08T07:47:52.623121Z	    4 Init DB	fescar
+2021-07-08T07:47:52.624293Z	    4 Query	SELECT action_order, event_object_table, trigger_name, event_manipulation, event_object_table, definer, action_statement, action_timing FROM information_schema.triggers WHERE BINARY event_object_schema = 'fescar' AND BINARY event_object_table = 'order_tbl' ORDER BY event_object_table
+2021-07-08T07:47:53.232461Z	    4 Init DB	fescar
+2021-07-08T07:47:53.233770Z	    4 Query	SELECT * FROM `fescar`.`order_tbl` LIMIT 0, 1000
+2021-07-08T07:47:53.235811Z	   47 Init DB	fescar
+2021-07-08T07:47:53.237813Z	   47 Query	SHOW COLUMNS FROM `fescar`.`order_tbl`
+2021-07-08T07:47:53.242410Z	    4 Query	SHOW TABLE STATUS LIKE 'order_tbl'
+2021-07-08T07:47:53.246780Z	    4 Query	SHOW CREATE TABLE `fescar`.`order_tbl`
+2021-07-08T07:47:54.345699Z	    4 Init DB	fescar
+2021-07-08T07:47:54.347424Z	    4 Query	SHOW CREATE TABLE `account_tbl`
+2021-07-08T07:47:54.350276Z	    4 Init DB	fescar
+2021-07-08T07:47:54.351992Z	    4 Query	SELECT action_order, event_object_table, trigger_name, event_manipulation, event_object_table, definer, action_statement, action_timing FROM information_schema.triggers WHERE BINARY event_object_schema = 'fescar' AND BINARY event_object_table = 'account_tbl' ORDER BY event_object_table
+2021-07-08T07:47:54.641163Z	    4 Init DB	fescar
+2021-07-08T07:47:54.642828Z	    4 Query	SELECT * FROM `fescar`.`account_tbl` LIMIT 0, 1000
+2021-07-08T07:47:54.645133Z	   47 Init DB	fescar
+2021-07-08T07:47:54.646413Z	   47 Query	SHOW COLUMNS FROM `fescar`.`account_tbl`
+2021-07-08T07:47:54.648631Z	    4 Query	SHOW TABLE STATUS LIKE 'account_tbl'
+2021-07-08T07:47:54.652473Z	    4 Query	SHOW CREATE TABLE `fescar`.`account_tbl`
+
+
+
+
+
+
+
+
+
+
+2021-07-08T07:48:03.256136Z	   42 Query	SET autocommit=0
+2021-07-08T07:48:03.269265Z	   42 Query	SELECT id, count FROM storage_tbl WHERE commodity_code = 'C100000' FOR UPDATE
+2021-07-08T07:48:03.270965Z	   42 Query	update storage_tbl set count = count - 30 where commodity_code = 'C100000'
+2021-07-08T07:48:03.272363Z	   42 Query	SELECT id, count FROM storage_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:48:03.341773Z	   42 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739655, '172.18.0.5:8091:45188736380739654', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739654","branchId":45188736380739655,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"UPDATE","tableName":"storage_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"storage_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":110}]]}]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"storage_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":80}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:48:03.343622Z	   42 Query	commit
+2021-07-08T07:48:03.346260Z	   42 Query	commit
+2021-07-08T07:48:03.347406Z	   42 Query	SET autocommit=1
+2021-07-08T07:48:03.373057Z	   43 Query	SET autocommit=0
+2021-07-08T07:48:03.374709Z	   43 Query	insert order_tbl(user_id,commodity_code,count,money) values('U100000','C100000',30,3000)
+2021-07-08T07:48:03.393584Z	   43 Query	SELECT * FROM order_tbl WHERE  (id ) in (  (21)  )
+2021-07-08T07:48:03.447144Z	   43 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739656, '172.18.0.5:8091:45188736380739654', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739654","branchId":45188736380739656,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"INSERT","tableName":"order_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords$EmptyTableRecords","tableName":"order_tbl","rows":["java.util.ArrayList",[]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"order_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":21},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"user_id","keyType":"NULL","type":12,"value":"U100000"},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"commodity_code","keyType":"NULL","type":12,"value":"C100000"},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"count","keyType":"NULL","type":4,"value":30},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":3000}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:48:03.449159Z	   43 Query	commit
+2021-07-08T07:48:03.452387Z	   43 Query	commit
+2021-07-08T07:48:03.454051Z	   43 Query	SET autocommit=1
+2021-07-08T07:48:03.477025Z	   40 Query	SET autocommit=0
+2021-07-08T07:48:03.478786Z	   40 Query	SELECT id, money FROM account_tbl WHERE user_id = 'U100000' FOR UPDATE
+2021-07-08T07:48:03.480480Z	   40 Query	update account_tbl set money = money - 3000 where user_id = 'U100000'
+2021-07-08T07:48:03.482010Z	   40 Query	SELECT id, money FROM account_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:48:03.538710Z	   40 Query	INSERT INTO undo_log (branch_id, xid, context, rollback_info, log_status, log_created, log_modified) VALUES (45188736380739657, '172.18.0.5:8091:45188736380739654', 'serializer=jackson', _binary'{"@class":"io.seata.rm.datasource.undo.BranchUndoLog","xid":"172.18.0.5:8091:45188736380739654","branchId":45188736380739657,"sqlUndoLogs":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.undo.SQLUndoLog","sqlType":"UPDATE","tableName":"account_tbl","beforeImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"account_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":1000}]]}]]},"afterImage":{"@class":"io.seata.rm.datasource.sql.struct.TableRecords","tableName":"account_tbl","rows":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Row","fields":["java.util.ArrayList",[{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"id","keyType":"PRIMARY_KEY","type":4,"value":7},{"@class":"io.seata.rm.datasource.sql.struct.Field","name":"money","keyType":"NULL","type":4,"value":-2000}]]}]]}}]]}', 0, now(6), now(6))
+2021-07-08T07:48:03.540708Z	   40 Query	commit
+2021-07-08T07:48:03.542942Z	   40 Query	commit
+2021-07-08T07:48:03.544381Z	   40 Query	SET autocommit=1
+2021-07-08T07:48:03.556808Z	   46 Query	select * from account_tbl where user_id='U100000'
+2021-07-08T07:48:03.567468Z	   40 Query	SET autocommit=0
+2021-07-08T07:48:03.569137Z	   40 Query	SELECT * FROM undo_log WHERE branch_id = 45188736380739657 AND xid = '172.18.0.5:8091:45188736380739654' FOR UPDATE
+2021-07-08T07:48:03.573347Z	   40 Query	SELECT * FROM account_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:48:03.575564Z	   40 Query	UPDATE account_tbl SET money = 1000 WHERE id = 7
+2021-07-08T07:48:03.577100Z	   40 Query	DELETE FROM undo_log WHERE branch_id = 45188736380739657 AND xid = '172.18.0.5:8091:45188736380739654'
+2021-07-08T07:48:03.578505Z	   40 Query	commit
+2021-07-08T07:48:03.580985Z	   40 Query	SET autocommit=1
+2021-07-08T07:48:03.617703Z	   43 Query	SET autocommit=0
+2021-07-08T07:48:03.619484Z	   43 Query	SELECT * FROM undo_log WHERE branch_id = 45188736380739656 AND xid = '172.18.0.5:8091:45188736380739654' FOR UPDATE
+2021-07-08T07:48:03.621945Z	   43 Query	SELECT * FROM order_tbl WHERE  (id ) in (  (21)  )
+2021-07-08T07:48:03.623814Z	   43 Query	DELETE FROM order_tbl WHERE id = 21
+2021-07-08T07:48:03.625124Z	   43 Query	DELETE FROM undo_log WHERE branch_id = 45188736380739656 AND xid = '172.18.0.5:8091:45188736380739654'
+2021-07-08T07:48:03.626279Z	   43 Query	commit
+2021-07-08T07:48:03.628730Z	   43 Query	SET autocommit=1
+2021-07-08T07:48:03.639127Z	   42 Query	SET autocommit=0
+2021-07-08T07:48:03.640361Z	   42 Query	SELECT * FROM undo_log WHERE branch_id = 45188736380739655 AND xid = '172.18.0.5:8091:45188736380739654' FOR UPDATE
+2021-07-08T07:48:03.642434Z	   42 Query	SELECT * FROM storage_tbl WHERE  (id ) in (  (7)  )
+2021-07-08T07:48:03.644109Z	   42 Query	UPDATE storage_tbl SET count = 110 WHERE id = 7
+2021-07-08T07:48:03.645442Z	   42 Query	DELETE FROM undo_log WHERE branch_id = 45188736380739655 AND xid = '172.18.0.5:8091:45188736380739654'
+2021-07-08T07:48:03.646841Z	   42 Query	commit
+2021-07-08T07:48:03.649039Z	   42 Query	SET autocommit=1
+
+
+
+
