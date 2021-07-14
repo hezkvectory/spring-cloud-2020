@@ -2,4 +2,4 @@
 
 
 
-http://localhost:8084/purchase/commit
+http://ubuntu:8084/purchase/commit

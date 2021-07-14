@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 services=(account bussiness order storage)
-services=(bussiness order)
+#services=(bussiness order)
 
-version=v2
+version=v4
 
 for service in ${services[@]}; do
   docker build -t ${service}:${version} ./${service}

@@ -17,4 +17,4 @@ RUN mkdir -p /opt/hezkvectory/application
 WORKDIR /opt/hezkvectory/application
 
 COPY ./target/application.jar /opt/hezkvectory/application
-ENTRYPOINT ["java","-jar", "$JAVA_OPTS","/opt/hezkvectory/application/application.jar"]
+ENTRYPOINT ["java","-jar", "/opt/hezkvectory/application/application.jar"]
