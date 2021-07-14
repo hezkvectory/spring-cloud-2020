@@ -15,7 +15,7 @@ spring:
     allow-bean-definition-overriding: true
 
 seata:
-  enabled: true
+  enabled: ${SEATA_ENABLED:false}
   service:
     grouplist:
       default: ubuntu:8091
@@ -28,12 +28,12 @@ logging:
     com.test: debug
 
 eureka:
+  instance:
+    hostname: ubuntu
+    prefer-ip-address: true
   client:
     service-url:
-      default-zone: http://${eureka.instance.hostname}:8761/eureka/
-  instance:
-    hostname:  127.0.0.1
-    prefer-ip-address: true
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
 
 feign:
   hystrix:

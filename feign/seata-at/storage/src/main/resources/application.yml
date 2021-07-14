@@ -19,7 +19,7 @@ logging:
     com.test: debug
 
 seata:
-  enabled: true
+  enabled: ${SEATA_ENABLED:false}
   service:
     grouplist:
       default: ubuntu:8091
@@ -30,9 +30,9 @@ seata:
 eureka:
   client:
     service-url:
-      default-zone: http://${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
   instance:
-    hostname:  127.0.0.1
+    hostname:  ubuntu
     prefer-ip-address: true
 
 feign:
