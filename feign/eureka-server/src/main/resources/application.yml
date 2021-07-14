@@ -5,11 +5,35 @@ spring:
 server:
   port: 8761
 
+ribbon:
+  ServerListRefreshInterval: 10000
+
 eureka:
   instance:
     hostname: localhost
+    lease-expiration-duration-in-seconds: 18
+    lease-renewal-interval-in-seconds: 6
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+  server:
+    enable-self-preservation: true
+    expectedClientRenewalIntervalSeconds: 6
+    eviction-interval-timer-in-ms: 60000
+    use-read-only-response-cache: false
+    responseCacheUpdateIntervalMs: 3000
+    responseCacheAutoExpirationInSeconds: 60
+    renewalThresholdUpdateIntervalMs: 55000
+    peer-node-read-timeout-ms: 6000
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    eureka-server-port: ${server.port}
+    register-with-eureka: true
+    fetch-registry: true
+    instanceInfoReplicationIntervalSeconds: 6
+    registryFetchIntervalSeconds: 5
+    filterOnlyUpInstances: false
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

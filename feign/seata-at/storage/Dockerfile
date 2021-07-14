@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/hezkvectory/centos6.8:v1
+FROM registry.cn-hangzhou.aliyuncs.com/hezkvectory/java:v1.8.1
 
 MAINTAINER hezhengkui hezkvectory@163.com
 

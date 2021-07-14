@@ -3,7 +3,7 @@
 services=(account bussiness order storage)
 #services=(bussiness order)
 
-version=v4
+version=v6
 
 for service in ${services[@]}; do
   docker build -t ${service}:${version} ./${service}
