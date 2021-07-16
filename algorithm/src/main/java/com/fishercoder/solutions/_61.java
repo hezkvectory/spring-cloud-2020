@@ -38,4 +38,35 @@ public class _61 {
             return copyHead;
         }
     }
+
+
+    public static class Solution {
+        public static ListNode rotateRight(ListNode head, int k) {
+            if (head == null) {
+                return head;
+            }
+            int count = 1;
+            ListNode dummyHead = head;
+            while (head.next != null) {
+                count++;
+                head = head.next;
+            }
+            if (count % k == 0) {
+                return dummyHead;
+            }
+            head.next = dummyHead;
+            int rotate = k % count;
+            while (rotate > 0) {
+                dummyHead = dummyHead.next;
+                rotate--;
+            }
+            head = dummyHead.next;
+            dummyHead.next = null;
+            return head;
+        }
+
+
+    }
+
+
 }

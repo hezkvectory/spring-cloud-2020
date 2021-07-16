@@ -12,10 +12,10 @@
     <name>spring-cloud-2020</name>
 
     <modules>
-<!--        <module>algorithm</module>-->
+        <module>algorithm</module>
 <!--        <module>base</module>-->
 <!--        <module>cas</module>-->
-        <module>feign</module>
+<!--        <module>feign</module>-->
         <!--        <module>spring-container</module>-->
 <!--        <module>standalone</module>-->
         <!--<module>design-pattern</module>-->
@@ -28,7 +28,7 @@
         <module>groovy</module>
         <module>redis</module>
         <module>thrift</module>-->
-<!--        <module>io</module>-->
+        <module>io</module>
     </modules>
 
     <properties>

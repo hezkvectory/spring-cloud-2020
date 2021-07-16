@@ -83,4 +83,50 @@ public class _46 {
         }
     }
 
+    public static class Solution3 {
+
+        public static List<List<Integer>> permute(List<Integer> list) {
+            List<List<Integer>> result = new ArrayList();
+            int len = list.size();
+            dfs(result, list, new ArrayList(), len);
+            return result;
+        }
+
+        public static void dfs(List<List<Integer>> result, List<Integer> list, List<Integer> temp, int len) {
+            if (temp.size() == len) {
+                result.add(new ArrayList(temp));
+                return;
+            }
+            for (int i = 0; i < list.size(); i++) {
+                if (temp.contains(list.get(i))) {
+                    continue;
+                }
+                temp.add(list.get(i));
+                dfs(result, list, temp, len);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+
+
+    public static class Solution4 {
+
+        public static List<List<Integer>> permute(List<Integer> list) {
+            List<List<Integer>> result = new ArrayList();
+            dfs(result, list, 0);
+            return result;
+        }
+
+        public static void dfs(List<List<Integer>> result, List<Integer> list, int start) {
+            if (start == list.size()) {
+                result.add(new ArrayList(list));
+                return;
+            }
+            for (int i = start; i < list.size(); i++) {
+                Collections.swap(list, i, start);
+                dfs(result, list, start + 1);
+                Collections.swap(list, i, start);
+            }
+        }
+    }
 }

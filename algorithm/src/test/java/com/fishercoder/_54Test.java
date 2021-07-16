@@ -12,11 +12,13 @@ import static org.junit.Assert.assertEquals;
 public class _54Test {
 
     private static _54.Solution1 solution1;
+    private static _54.Solution solution;
     private static int[][] matrix;
 
     @BeforeClass
     public static void setup() {
         solution1 = new _54.Solution1();
+        solution = new _54.Solution();
     }
 
     @Test
@@ -26,7 +28,7 @@ public class _54Test {
                 {4, 5, 6},
                 {7, 8, 9},
         };
-        assertEquals(Arrays.asList(1, 2, 3, 6, 9, 8, 7, 4, 5), solution1.spiralOrder(matrix));
+        assertEquals(Arrays.asList(1, 2, 3, 6, 9, 8, 7, 4, 5), solution.spiralOrder(matrix));
     }
 
     @Test

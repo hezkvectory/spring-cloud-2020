@@ -15,7 +15,7 @@
 
     <modules>
         <module>eureka-server</module>
-        <module>seata-at</module>
+<!--        <module>seata-at</module>-->
 <!--        <module>seata-tcc</module>-->
 <!--        <module>feign-server</module>
         <module>feign-client</module>-->

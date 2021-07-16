@@ -4,6 +4,8 @@ import com.fishercoder.solutions._1;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
+
 public class _1Test {
     private static _1.Solution1 solution1;
     private static int[] nums;

@@ -26,7 +26,9 @@ public class _3 {
             int ans = 0;
             for (int i = 0; i < n; i++)
                 for (int j = i + 1; j <= n; j++)
-                    if (allUnique(s, i, j)) ans = Math.max(ans, j - i);
+                    if (allUnique(s, i, j)) {
+                        ans = Math.max(ans, j - i);
+                    }
             return ans;
         }
 
@@ -168,8 +170,39 @@ public class _3 {
 
     }
 
+
+    public static class Solution7{
+        public int lengthOfLongestSubstring(String str) {
+            if (str == null){
+                return 0;
+            }
+            int len = str.length();
+            if(len == 1) {
+                return 1;
+            }
+            int left = 0, right = 0;
+            boolean[] used = new boolean[256];
+            int max = 0;
+            while(right < len) {
+                if (used[str.charAt(right)]) {
+                    max = Math.max(max, right - left);
+                    while(left<right&&str.charAt(left)!=str.charAt(right)) {
+                        used[str.charAt(left)] = false;
+                        left++;
+                    }
+                    right++;
+                    left++;
+                } else{
+                    used[str.charAt(right++)] = true;
+                }
+            }
+            max = Math.max(max, right - left);
+            return max;
+        }
+    }
+
     public static void main(String[] args) {
-        Solution6 solution5 = new Solution6();
+        Solution7 solution5 = new Solution7();
         System.out.println(solution5.lengthOfLongestSubstring("abcabcbb"));
         System.out.println(solution5.lengthOfLongestSubstring("bbbb"));
     }

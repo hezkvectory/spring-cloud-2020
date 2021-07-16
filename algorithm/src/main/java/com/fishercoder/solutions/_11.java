@@ -20,8 +20,6 @@ public class _11 {
             while (i < j) {
                 max = Math.max(Math.min(height[i], height[j]) * (j - i), max);
                 if (height[i] <= height[j]) {
-                    // we need to find the shorter one,
-                    // then calculate its area
                     i++;
                 } else {
                     j--;

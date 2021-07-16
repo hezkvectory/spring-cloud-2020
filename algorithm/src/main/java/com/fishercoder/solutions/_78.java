@@ -1,26 +1,28 @@
 package com.fishercoder.solutions;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
  * 78. Subsets
- *
+ * <p>
  * Given a set of distinct integers, nums, return all possible subsets.
  * Note: The solution set must not contain duplicate subsets.
-
- For example,
- If nums = [1,2,3], a solution is:
- [
- [3],
- [1],
- [2],
- [1,2,3],
- [1,3],
- [2,3],
- [1,2],
- []
- ]
+ * <p>
+ * For example,
+ * If nums = [1,2,3], a solution is:
+ * [
+ * [3],
+ * [1],
+ * [2],
+ * [1,2,3],
+ * [1,3],
+ * [2,3],
+ * [1,2],
+ * []
+ * ]
  */
 
 public class _78 {
@@ -47,7 +49,9 @@ public class _78 {
     }
 
     public static class Solution2 {
-        /**This is the most straightforward solution and easy to follow.*/
+        /**
+         * This is the most straightforward solution and easy to follow.
+         */
         public List<List<Integer>> subsets(int[] nums) {
             List<List<Integer>> result = new ArrayList();
             backtracking(result, new ArrayList(), nums, 0);
@@ -82,6 +86,29 @@ public class _78 {
                 result.add(new ArrayList<>(list));
                 backtracking(result, list, nums, i + 1);
                 list.remove(list.size() - 1);
+            }
+        }
+    }
+
+
+    public static class Solution {
+        public List<List<Integer>> subsets(int[] nums) {
+            List<List<Integer>> ans = new ArrayList<>();
+            if (nums == null || nums.length == 0) {
+                return ans;
+            }
+            Deque<Integer> deque = new ArrayDeque<>();
+            ans.add(new ArrayList<>());
+            dfs(ans, deque, nums, 0);
+            return ans;
+        }
+
+        private void dfs(List<List<Integer>> ans, Deque<Integer> deque, int[] nums, int start) {
+            for (int i = start; i < nums.length; i++) {
+                deque.add(nums[i]);
+                ans.add(new ArrayList<>(deque));
+                dfs(ans, deque, nums, i + 1);
+                deque.removeLast();
             }
         }
     }
