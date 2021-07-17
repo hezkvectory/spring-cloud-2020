@@ -8,6 +8,8 @@ import static org.junit.Assert.assertEquals;
 
 public class _567Test {
     private static _567.Solution1 solution1;
+    private static _567.Solution9 solution9;
+    private static _567.Solution8 solution8;
     private static boolean expected;
     private static boolean actual;
     private static String s1;
@@ -16,6 +18,8 @@ public class _567Test {
     @BeforeClass
     public static void setup() {
         solution1 = new _567.Solution1();
+        solution9 = new _567.Solution9();
+        solution8 = new _567.Solution8();
     }
 
     @Test
@@ -23,7 +27,7 @@ public class _567Test {
         s1 = "ab";
         s2 = "eidbaooo";
         expected = true;
-        actual = solution1.checkInclusion(s1, s2);
+        actual = solution8.checkInclusion(s1, s2);
         assertEquals(expected, actual);
     }
 }

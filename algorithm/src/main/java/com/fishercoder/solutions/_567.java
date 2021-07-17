@@ -118,4 +118,70 @@ public class _567 {
     }
 
 
+    /**
+     * 字符串排列
+     * 滑动窗口接发
+     */
+    public static class Solution9 {
+        /**
+         * 字符串s1中是否包含s2，不关心顺序
+         */
+        public boolean checkInclusion(String s2, String s1) {
+            int m = s1.length();
+            int n = s2.length();
+            if (n > m) {
+                return false;
+            }
+            int[] nums1 = new int[26];
+            int[] nums2 = new int[26];
+            for (int i = 0; i < n; i++) {
+                ++nums1[s1.charAt(i) - 'a'];
+                ++nums2[s2.charAt(i) - 'a'];
+            }
+            if (Arrays.equals(nums1, nums2)) {
+                return true;
+            }
+            for (int i = n; i < m; i++) {
+                ++nums1[s1.charAt(i) - 'a'];
+                --nums1[s1.charAt(i - n) - 'a'];
+                if (Arrays.equals(nums1, nums2)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+
+    public static class Solution8 {
+        public boolean checkInclusion(String s1, String s2) {
+            int m = s1.length();
+            int n = s2.length();
+            if (m > n) {
+                return false;
+            }
+            int[] nums = new int[26];
+            for (int i = 0; i < m; i++) {
+                --nums[s1.charAt(i) - 'a'];
+            }
+            int start = 0;
+            int end = 0;
+            while (end < n) {
+                int c = s2.charAt(end) - 'a';
+                ++nums[c];
+                while (nums[c] > 0) {
+                    --nums[s2.charAt(start) - 'a'];
+                    start++;
+                }
+                if (end - start + 1 == m) {
+                    return true;
+                }
+                end++;
+            }
+
+            return false;
+        }
+    }
+
+
 }

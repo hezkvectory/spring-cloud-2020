@@ -68,16 +68,16 @@ public class _523 {
                 return false;
             }
 
+            //then k cannot be zero any more
+            if (k == 0 || nums.length < 2) {
+                return false;
+            }
+
             //Two continuous zeroes will form a subarray of length 2 with sum 0, 0*k = 0 will always be true
             for (int i = 0; i < nums.length - 1; i++) {
                 if (nums[i] == 0 && nums[i + 1] == 0) {
                     return true;
                 }
-            }
-
-            //then k cannot be zero any more
-            if (k == 0 || nums.length < 2) {
-                return false;
             }
 
             int[] preSums = new int[nums.length + 1];

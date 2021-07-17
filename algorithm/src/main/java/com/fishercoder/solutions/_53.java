@@ -45,4 +45,33 @@ public class _53 {
             return maxSoFar;
         }
     }
+
+    public static class Solution2 {
+        public int maxSubArray(int[] nums) {
+            int sum = nums[0];
+            int maxSum = Integer.MIN_VALUE;
+            int n = nums.length;
+            for (int i = 1; i < n; i++) {
+                if (sum > 0) {
+                    sum += nums[i];
+                } else {
+                    sum = nums[i];
+                }
+                maxSum = Math.max(sum, maxSum);
+            }
+            return maxSum;
+        }
+    }
+
+    public static class Solution3 {
+        public int maxSubArray(int[] nums) {
+            int maxAns = nums[0];
+            int prev = 0;
+            for (int x : nums) {
+                prev = Math.max(prev + x, x);
+                maxAns = Math.max(maxAns, prev);
+            }
+            return maxAns;
+        }
+    }
 }

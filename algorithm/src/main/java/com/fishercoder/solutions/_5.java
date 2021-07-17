@@ -71,7 +71,26 @@ public class _5 {
                 }
             }
             return "";//表示字符串中无回文子串
+        }
+    }
 
+    public static class Solution {
+        public String maxSubstring(String str) {
+            String result = "";
+            int len = str.length();
+            for (int i = 0; i < 2 * len - 1; i++) {
+                int left = i / 2;
+                int right = left + i % 2;
+                while (left >= 0 && right < len && str.charAt(left) == str.charAt(right)) {
+                    String temp = str.substring(left, right + 1);
+                    if (result.length() < temp.length()) {
+                        result = temp;
+                    }
+                    left--;
+                    right++;
+                }
+            }
+            return result;
         }
     }
 }
