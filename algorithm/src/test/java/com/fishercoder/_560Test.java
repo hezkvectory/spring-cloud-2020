@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class _560Test {
     private static _560.Solution1 solution1;
+    private static _560.Solution solution;
     private static int expected;
     private static int actual;
     private static int[] nums;
@@ -19,6 +20,7 @@ public class _560Test {
     @BeforeClass
     public static void setup() {
         solution1 = new _560.Solution1();
+        solution = new _560.Solution();
     }
 
     @Test
@@ -26,7 +28,24 @@ public class _560Test {
         nums = new int[]{1, 1, 1};
         k = 2;
         expected = 2;
-        actual = solution1.subarraySum(nums, k);
+        actual = solution.subarraySum(nums, k);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test2() {
+        nums = new int[]{1};
+        k = 0;
+        expected = 0;
+        actual = solution.subarraySum(nums, k);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void test3() {
+        nums = new int[]{-1,-1,1};
+        k = 0;
+        expected = 1;
+        actual = solution.subarraySum(nums, k);
         assertEquals(expected, actual);
     }
 }

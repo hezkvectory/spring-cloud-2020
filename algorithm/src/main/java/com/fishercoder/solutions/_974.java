@@ -5,10 +5,10 @@ import java.util.Map;
 
 /**
  * 974. Subarray Sums Divisible by K
- *
+ * <p>
  * Given an array A of integers, return the number of (contiguous, non-empty) subarrays that have a sum
  * divisible by K.
- * */
+ */
 
 public class _974 {
     public static class Solution1 {
@@ -19,10 +19,11 @@ public class _974 {
             map.put(0, 1);
 
             for (int i = 0; i < A.length; i++) {
-                sum = (sum + A[i]) % K;
-                if (sum < 0) {
-                    sum += K;
-                }
+//                sum = (sum + A[i]) % K;
+//                if (sum < 0) {
+//                    sum += K;
+//                }
+                sum = ((sum + A[i]) % K + K) % K;
 
                 count += map.getOrDefault(sum, 0);
                 map.put(sum, map.getOrDefault(sum, 0) + 1);

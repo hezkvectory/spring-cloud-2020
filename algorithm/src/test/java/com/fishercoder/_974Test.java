@@ -17,6 +17,6 @@ public class _974Test {
 
     @Test
     public void test1() {
-        assertEquals(7, test.subarraysDivByK(new int[]{4, 5, 0, -2, -3, 1}, 5));
+        assertEquals(7, test.subarraysDivByK(new int[]{4,5,0,-2,-3,1}, 5));
     }
 }
