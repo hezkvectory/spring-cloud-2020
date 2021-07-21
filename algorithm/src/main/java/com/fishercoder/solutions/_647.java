@@ -49,6 +49,7 @@ public class _647 {
 
     /**
      * 动态规划
+     * dp表示从字符串i -> j 的是否为回文字符串
      */
     public static class Solution {
         public int countSubstrings(String s) {
@@ -69,6 +70,9 @@ public class _647 {
         }
     }
 
+    /**
+     * 中心扩散法
+     */
     public static class Solution2 {
         public int countSubstrings(String s) {
             int ans = 0;

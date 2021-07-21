@@ -14,6 +14,7 @@ public class MyTransformer2 implements ClassFileTransformer {
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
                             ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         className = className.replace("/", ".");
+        System.out.println(className);
         if ("com.vipkid.commons.springcloud.scheduler.internal.JobHandler$CallHandler".equalsIgnoreCase(className)) {
             String methodName = "handle";
             CtClass ctclass = null;

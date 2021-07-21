@@ -2,7 +2,7 @@ package cn.itcast.algorithm.test;
 
 import cn.itcast.algorithm.sort.Insertion;
 import cn.itcast.algorithm.sort.Merge;
-import cn.itcast.algorithm.sort.Shell;
+import cn.itcast.algorithm.sort.ShellSort;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -41,7 +41,7 @@ public class SortCompare {
         //1.获取执行之前的时间
         long start = System.currentTimeMillis();
         //2.执行算法代码
-        Shell.sort(a);
+        ShellSort.sort(a);
         //3.获取执行之后的时间
         long end = System.currentTimeMillis();
         //4.算出程序执行的时间并输出

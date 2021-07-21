@@ -33,7 +33,39 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int a[] = {49, 38, 65, 97, 76, 13, 27, 49};
-        quickSort(a);
+//        quickSort(a);
+//        System.out.println(Arrays.toString(a));
+        new Solution().sort(a, 0, a.length - 1);
         System.out.println(Arrays.toString(a));
+    }
+
+
+    public static class Solution {
+        public void sort(int[] nums, int start, int end) {
+            if (start >= end) {
+                return;
+            }
+            int i = start;
+            int j = end;
+            int temp = nums[start];
+            while (i < j) {
+                while (i < j && nums[j] > temp) {
+                    j--;
+                }
+                if (i < j) {
+                    nums[i++] = nums[j];
+                }
+
+                while (i < j && nums[i] < temp) {
+                    i++;
+                }
+                if (i < j) {
+                    nums[j--] = nums[i];
+                }
+            }
+            nums[i] = temp;
+            sort(nums, start, i - 1);
+            sort(nums, i + 1, end);
+        }
     }
 }

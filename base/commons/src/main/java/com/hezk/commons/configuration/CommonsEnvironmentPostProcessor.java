@@ -35,7 +35,7 @@ public class CommonsEnvironmentPostProcessor implements EnvironmentPostProcessor
 
         firstSource.put("eureka.client.register-with-eureka", true);
         firstSource.put("eureka.client.fetch-registry", true);
-        firstSource.put("eureka.client.service-url.defaultZone", "http://admin:admin@eureka.vipkid-qa.com.cn/eureka");
+        firstSource.put("eureka.client.service-url.defaultZone", "http://ubuntu:8761/eureka");
 
         firstSource.put("eureka.instance.prefer-ip-address", true);
         firstSource.put("eureka.client.registry-fetch-interval-seconds", 6);

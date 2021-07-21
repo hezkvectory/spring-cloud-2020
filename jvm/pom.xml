@@ -14,8 +14,8 @@
 
     <modules>
         <module>asm</module>
-<!--        <module>bytebuddy</module>-->
-<!--        <module>javassist</module>-->
+        <module>bytebuddy</module>
+        <module>javassist</module>
 <!--        <module>jvm-lecture</module>-->
     </modules>
 

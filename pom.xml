@@ -13,16 +13,16 @@
 
     <modules>
         <module>algorithm</module>
-<!--        <module>base</module>-->
+        <module>base</module>
 <!--        <module>cas</module>-->
-<!--        <module>feign</module>-->
+        <module>feign</module>
         <!--        <module>spring-container</module>-->
 <!--        <module>standalone</module>-->
         <!--<module>design-pattern</module>-->
 <!--        <module>sharding-jdbc</module>-->
         <!--          <module>gateway</module>
                <module>es</module>-->
-<!--        <module>jvm</module>-->
+        <module>jvm</module>
     <!--    <module>grpc</module>
         <module>shiro</module>
         <module>groovy</module>

@@ -47,7 +47,52 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int a[] = {51, 46, 20, 18, 65, 97, 82, 30, 77, 50};
-        mergeSort(a, 0, a.length - 1);
+//        mergeSort(a, 0, a.length - 1);
+        new Solution().mergeSort(a, 0, a.length - 1);
         System.out.println("排序结果：" + Arrays.toString(a));
+        //排序结果：[18, 20, 30, 46, 50, 51, 65, 77, 82, 97]
+        //排序结果：[18, 20, 30, 46, 50, 51, 65, 77, 82, 97]
+        //排序结果：[18, 20, 30, 46, 50, 51, 65, 77, 82, 97]
+        //排序结果：[18, 20, 30, 46, 50, 51, 65, 77, 82, 97]
+        //排序结果：[18, 20, 30, 46, 50, 51, 65, 77, 82, 97]
+    }
+
+
+    public static class Solution {
+
+        private void mergeSort(int[] nums, int start, int end) {
+            if (start < end) {
+                int mid = start + (end - start) / 2;
+                mergeSort(nums, start, mid);
+                mergeSort(nums, mid + 1, end);
+                merge(nums, start, mid, end);
+            }
+        }
+
+        private void merge(int[] nums, int start, int mid, int end) {
+            int len = end - start + 1;
+            int[] temp = new int[len];
+            int i = start;
+            int j = mid + 1;
+            int k = 0;
+            while (i <= mid && j <= end) {
+                if (nums[i] < nums[j]) {
+                    temp[k++] = nums[i++];
+                } else {
+                    temp[k++] = nums[j++];
+                }
+            }
+            while (i <= mid) {
+                temp[k++] = nums[i++];
+            }
+            while (j <= end) {
+                temp[k++] = nums[j++];
+            }
+            k = 0;
+            while (k < len) {
+                nums[start++] = temp[k++];
+            }
+        }
+
     }
 }
